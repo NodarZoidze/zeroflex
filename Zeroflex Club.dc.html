@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  body{margin:0;background:#050507;}
+  @keyframes zfSpin{to{transform:rotate(360deg)}}
+  @keyframes zfPulse{0%,100%{opacity:.85;filter:drop-shadow(0 0 14px rgba(212,175,55,.45))}50%{opacity:1;filter:drop-shadow(0 0 26px rgba(212,175,55,.8))}}
+  @keyframes zfRise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes zfFade{from{opacity:0}to{opacity:1}}
+  @keyframes zfGlow{0%,100%{box-shadow:0 0 50px rgba(212,175,55,.14),inset 0 0 36px rgba(212,175,55,.06)}50%{box-shadow:0 0 80px rgba(212,175,55,.26),inset 0 0 48px rgba(212,175,55,.1)}}
+  .zf-scroll::-webkit-scrollbar{width:0;height:0}
+  .zf-scroll{scrollbar-width:none;-ms-overflow-style:none}
+  image-slot{color:rgba(243,217,139,.6)}
+  image-slot::part(frame){background:radial-gradient(120% 90% at 50% 0%, #1b1b22 0%, #0c0c10 70%)}
+  image-slot::part(ring){border-color:rgba(212,175,55,.32)}
+</style>
+</helmet>
+
+<div style="min-height:100vh;width:100%;display:flex;align-items:center;justify-content:center;padding:32px 12px;box-sizing:border-box;background:radial-gradient(140% 100% at 50% -10%, #14110a 0%, #08080b 45%, #050507 100%);font-family:'Jost',system-ui,sans-serif;">
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <linearGradient id="zfGold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8edc2"/><stop offset="0.45" stop-color="#d4af37"/><stop offset="1" stop-color="#8f6e1c"/>
+    </linearGradient>
+  </defs></svg>
+
+  <div style="position:relative;width:402px;height:858px;border-radius:46px;background:#07070a;box-shadow:0 0 0 2px #1c1a14, 0 0 0 12px #100f0c, 0 40px 120px rgba(0,0,0,.7), 0 0 140px rgba(212,175,55,.08);overflow:hidden;display:flex;flex-direction:column;">
+
+    <!-- notch -->
+    <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:132px;height:30px;background:#000;border-bottom-left-radius:18px;border-bottom-right-radius:18px;z-index:60;"></div>
+
+    <!-- status bar -->
+    <sc-if value="{{ showChrome }}" hint-placeholder-val="{{ true }}">
+    <div style="height:50px;flex:0 0 auto;display:flex;align-items:flex-end;justify-content:space-between;padding:0 26px 6px;z-index:55;color:#efe9da;font-size:13px;letter-spacing:.04em;">
+      <span style="font-weight:500;">9:41</span>
+      <span style="display:flex;gap:7px;align-items:center;opacity:.85;font-size:12px;">
+        <svg width="17" height="11" viewBox="0 0 18 12" fill="#efe9da"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="5" y="4" width="3" height="8" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M8 10.5l-.01.01M2 5.5a9 9 0 0 1 12 0M4.4 7.8a5.5 5.5 0 0 1 7.2 0" stroke="#efe9da" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <svg width="24" height="12" viewBox="0 0 26 12" fill="none"><rect x="1" y="1" width="21" height="10" rx="2.5" stroke="#efe9da" stroke-opacity=".5"/><rect x="3" y="3" width="15" height="6" rx="1" fill="#efe9da"/><rect x="23" y="4" width="2" height="4" rx="1" fill="#efe9da" fill-opacity=".5"/></svg>
+      </span>
+    </div>
+    </sc-if>
+
+    <!-- ===================== CONTENT ===================== -->
+    <div class="zf-scroll" style="flex:1 1 auto;overflow-y:auto;position:relative;">
+
+      <!-- ============ SPLASH ============ -->
+      <sc-if value="{{ isSplash }}" hint-placeholder-val="{{ true }}">
+      <div style="position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 18%, #1a160c 0%, #0a0a0d 50%, #060608 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 38px;z-index:70;">
+        <div style="position:absolute;inset:0;background:radial-gradient(60% 40% at 50% 16%, rgba(212,175,55,.10), transparent 70%);"></div>
+
+        <div style="position:relative;width:262px;height:262px;display:flex;align-items:center;justify-content:center;margin-bottom:30px;animation:zfFade 1.2s ease both;">
+          <div style="position:absolute;inset:0;border-radius:50%;border:1px solid rgba(212,175,55,.16);animation:zfGlow 5s ease-in-out infinite;"></div>
+          <div style="position:absolute;inset:14px;border-radius:50%;background:conic-gradient(from 0deg, transparent 0 58%, rgba(248,237,194,.9) 78%, rgba(212,175,55,.2) 88%, transparent 100%);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 1.5px),#000 calc(100% - 1px));mask:radial-gradient(farthest-side,transparent calc(100% - 1.5px),#000 calc(100% - 1px));animation:zfSpin 7s linear infinite;"></div>
+          <div style="width:92px;height:92px;animation:zfPulse 4s ease-in-out infinite;">
+            <svg viewBox="0 0 100 100" style="width:100%;height:100%"><path d="M50 84 L12 22 L88 22 Z" fill="none" stroke="url(#zfGold)" stroke-width="2.4"/><path d="M50 60 L31 33 L69 33 Z" fill="url(#zfGold)"/></svg>
+          </div>
+        </div>
+
+        <div style="animation:zfRise 1s ease .3s both;">
+          <div style="font-family:'Cinzel',serif;font-weight:600;font-size:32px;letter-spacing:.42em;text-indent:.42em;background:linear-gradient(100deg,#f8edc2,#d4af37,#b8860b);-webkit-background-clip:text;background-clip:text;color:transparent;">ZEROFLEX</div>
+          <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-top:10px;">
+            <span style="width:38px;height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,.6));"></span>
+            <span style="font-family:'Cinzel',serif;font-size:12px;letter-spacing:.55em;text-indent:.55em;color:#cdb96a;">CLUB</span>
+            <span style="width:38px;height:1px;background:linear-gradient(270deg,transparent,rgba(212,175,55,.6));"></span>
+          </div>
+        </div>
+
+        <p style="animation:zfRise 1s ease .55s both;margin:28px 0 4px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:21px;line-height:1.45;color:rgba(239,233,218,.82);max-width:264px;">Supercars, helicopters and yachts — your way, in Batumi.</p>
+        <div style="animation:zfRise 1s ease .7s both;margin-top:14px;font-size:11px;letter-spacing:.34em;color:rgba(239,233,218,.5);">BATUMI · OPEN TO ALL</div>
+
+        <button onClick="{{ enter }}" style="animation:zfRise 1s ease .9s both;margin-top:42px;cursor:pointer;background:linear-gradient(100deg,#f3d98b,#d4af37,#aa811f);color:#1a1408;border:none;border-radius:40px;padding:16px 46px;font-family:'Cinzel',serif;font-weight:600;font-size:13px;letter-spacing:.22em;box-shadow:0 12px 40px rgba(212,175,55,.3);">ENTER THE CLUB</button>
+
+        <div style="animation:zfFade 1.4s ease 1.2s both;position:absolute;bottom:34px;left:0;right:0;font-size:10.5px;letter-spacing:.28em;color:rgba(239,233,218,.4);">24/7 PRIVATE CONCIERGE</div>
+      </div>
+      </sc-if>
+
+      <!-- ============ HOME ============ -->
+      <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+      <div data-screen-label="Home" style="padding:6px 22px 26px;animation:zfFade .5s ease both;">
+        <!-- header -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0 18px;">
+          <div style="display:flex;align-items:center;gap:11px;">
+            <div style="width:34px;height:34px;"><svg viewBox="0 0 100 100" style="width:100%;height:100%"><path d="M50 84 L12 22 L88 22 Z" fill="none" stroke="url(#zfGold)" stroke-width="3"/><path d="M50 60 L31 33 L69 33 Z" fill="url(#zfGold)"/></svg></div>
+            <div>
+              <div style="font-family:'Cinzel',serif;font-weight:600;font-size:14px;letter-spacing:.26em;color:#efe9da;">ZEROFLEX</div>
+              <div style="font-size:9px;letter-spacing:.4em;color:#a98f3f;margin-top:1px;">CLUB · BATUMI</div>
+            </div>
+          </div>
+          <div style="width:38px;height:38px;border-radius:50%;border:1px solid rgba(212,175,55,.3);display:flex;align-items:center;justify-content:center;color:#d4af37;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+          </div>
+        </div>
+
+        <!-- hero statement -->
+        <div style="margin:6px 0 26px;">
+          <div style="font-size:10px;letter-spacing:.36em;color:#a98f3f;margin-bottom:14px;">WELCOME · BATUMI</div>
+          <h1 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:38px;line-height:1.06;color:#f3eede;letter-spacing:.01em;">Extraordinary, <span style="font-style:italic;background:linear-gradient(100deg,#f8edc2,#d4af37,#b8860b);-webkit-background-clip:text;background-clip:text;color:transparent;">arranged quietly.</span></h1>
+          <p style="margin:14px 0 0;font-size:13.5px;line-height:1.6;color:rgba(239,233,218,.6);max-width:300px;">Supercars, private helicopters and yachts across Batumi — booked through a single message. Open to everyone.</p>
+        </div>
+
+        <!-- services -->
+        <div style="display:flex;flex-direction:column;gap:14px;">
+
+          <div onClick="{{ goFleet }}" style="position:relative;overflow:hidden;cursor:pointer;border-radius:22px;border:1px solid rgba(212,175,55,.16);background:linear-gradient(155deg,#16151b 0%,#0c0c10 100%);padding:22px;min-height:118px;display:flex;flex-direction:column;justify-content:space-between;">
+            <div style="position:absolute;right:-30px;top:-30px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle, rgba(212,175,55,.16), transparent 65%);"></div>
+            <div style="position:relative;display:flex;justify-content:space-between;align-items:flex-start;">
+              <div style="width:44px;height:44px;border-radius:12px;border:1px solid rgba(212,175,55,.28);display:flex;align-items:center;justify-content:center;color:#e6c869;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13M5 13h14v4H5zM5 13v4m14-4v4M7 17v1.5M17 17v1.5"/><circle cx="7.5" cy="15" r="1"/><circle cx="16.5" cy="15" r="1"/></svg></div>
+              <span style="font-size:9px;letter-spacing:.26em;color:rgba(239,233,218,.4);border:1px solid rgba(239,233,218,.14);border-radius:20px;padding:5px 11px;">FLEET</span>
+            </div>
+            <div style="position:relative;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:500;color:#f3eede;line-height:1.05;">Sport &amp; Luxury Cars</div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px;">
+                <span style="font-size:11px;letter-spacing:.04em;color:rgba(239,233,218,.5);">Lamborghini · Ferrari · Rolls-Royce</span>
+                <span style="color:#d4af37;display:flex;align-items:center;gap:4px;font-size:11px;letter-spacing:.14em;">EXPLORE <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </div>
+            </div>
+          </div>
+
+          <div onClick="{{ goHeli }}" style="position:relative;overflow:hidden;cursor:pointer;border-radius:22px;border:1px solid rgba(212,175,55,.16);background:linear-gradient(155deg,#16151b 0%,#0c0c10 100%);padding:22px;min-height:118px;display:flex;flex-direction:column;justify-content:space-between;">
+            <div style="position:absolute;right:-30px;top:-30px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle, rgba(212,175,55,.16), transparent 65%);"></div>
+            <div style="position:relative;display:flex;justify-content:space-between;align-items:flex-start;">
+              <div style="width:44px;height:44px;border-radius:12px;border:1px solid rgba(212,175,55,.28);display:flex;align-items:center;justify-content:center;color:#e6c869;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h12M9 3v2M9 5v6m0 0H6m3 0h3m-3 0v3m0 0H7l-1 3m4-3h2.5a3.5 3.5 0 0 0 3.5-3.5V9l5 1"/></svg></div>
+              <span style="font-size:9px;letter-spacing:.26em;color:rgba(239,233,218,.4);border:1px solid rgba(239,233,218,.14);border-radius:20px;padding:5px 11px;">AVIATION</span>
+            </div>
+            <div style="position:relative;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:500;color:#f3eede;line-height:1.05;">Private Helicopter</div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px;">
+                <span style="font-size:11px;letter-spacing:.04em;color:rgba(239,233,218,.5);">Coastal flights &amp; transfers</span>
+                <span style="color:#d4af37;display:flex;align-items:center;gap:4px;font-size:11px;letter-spacing:.14em;">EXPLORE <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </div>
+            </div>
+          </div>
+
+          <div onClick="{{ goBoat }}" style="position:relative;overflow:hidden;cursor:pointer;border-radius:22px;border:1px solid rgba(212,175,55,.16);background:linear-gradient(155deg,#16151b 0%,#0c0c10 100%);padding:22px;min-height:118px;display:flex;flex-direction:column;justify-content:space-between;">
+            <div style="position:absolute;right:-30px;top:-30px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle, rgba(212,175,55,.16), transparent 65%);"></div>
+            <div style="position:relative;display:flex;justify-content:space-between;align-items:flex-start;">
+              <div style="width:44px;height:44px;border-radius:12px;border:1px solid rgba(212,175,55,.28);display:flex;align-items:center;justify-content:center;color:#e6c869;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18s1.5 1 3 1 3-1 3-1 1.5 1 3 1 3-1 3-1 1.5 1 3 1M5 16l-1-5h16l-2 5M12 11V4M7 7l5-3 5 3"/></svg></div>
+              <span style="font-size:9px;letter-spacing:.26em;color:rgba(239,233,218,.4);border:1px solid rgba(239,233,218,.14);border-radius:20px;padding:5px 11px;">MARINE</span>
+            </div>
+            <div style="position:relative;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:500;color:#f3eede;line-height:1.05;">Yacht &amp; Boat</div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px;">
+                <span style="font-size:11px;letter-spacing:.04em;color:rgba(239,233,218,.5);">Charters on the Black Sea</span>
+                <span style="color:#d4af37;display:flex;align-items:center;gap:4px;font-size:11px;letter-spacing:.14em;">EXPLORE <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </div>
+            </div>
+          </div>
+
+          <div onClick="{{ goTransfer }}" style="position:relative;overflow:hidden;cursor:pointer;border-radius:22px;border:1px solid rgba(212,175,55,.16);background:linear-gradient(155deg,#16151b 0%,#0c0c10 100%);padding:22px;min-height:118px;display:flex;flex-direction:column;justify-content:space-between;">
+            <div style="position:absolute;right:-30px;top:-30px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle, rgba(212,175,55,.16), transparent 65%);"></div>
+            <div style="position:relative;display:flex;justify-content:space-between;align-items:flex-start;">
+              <div style="width:44px;height:44px;border-radius:12px;border:1px solid rgba(212,175,55,.28);display:flex;align-items:center;justify-content:center;color:#e6c869;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16.5l1.4-4.2A2 2 0 0 1 6.3 11h7.4a2 2 0 0 1 1.9 1.3l1.4 4.2M3 16.5h14M3 16.5v2m14-2v2M6 14.5h.01M14 14.5h.01"/><path d="M16.5 4.5l5 1.8a1 1 0 0 1 .1 1.8L20 9.2 18 12l-1.6-.4.6-2.4-2.2.7-1 .9-1.3-.4 2-3.6a1.4 1.4 0 0 1 1.5-.7z"/></svg></div>
+              <span style="font-size:9px;letter-spacing:.26em;color:rgba(239,233,218,.4);border:1px solid rgba(239,233,218,.14);border-radius:20px;padding:5px 11px;">TRANSFER</span>
+            </div>
+            <div style="position:relative;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:500;color:#f3eede;line-height:1.05;">Airport Transfer</div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px;">
+                <span style="font-size:11px;letter-spacing:.04em;color:rgba(239,233,218,.5);">Lux-class autos · chauffeured</span>
+                <span style="color:#d4af37;display:flex;align-items:center;gap:4px;font-size:11px;letter-spacing:.14em;">EXPLORE <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- concierge callout -->
+        <div onClick="{{ goConcierge }}" style="cursor:pointer;margin-top:18px;border-radius:20px;border:1px solid rgba(212,175,55,.2);background:linear-gradient(120deg, rgba(212,175,55,.1), rgba(212,175,55,.02));padding:18px 20px;display:flex;align-items:center;gap:15px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#f3d98b,#b8860b);display:flex;align-items:center;justify-content:center;color:#1a1408;flex:0 0 auto;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div style="flex:1;">
+            <div style="font-family:'Cinzel',serif;font-size:12px;letter-spacing:.14em;color:#f3eede;">PERSONAL CONCIERGE</div>
+            <div style="font-size:11.5px;color:rgba(239,233,218,.55);margin-top:3px;">Available 24/7 · Reply within minutes</div>
+          </div>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.6" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ============ FLEET ============ -->
+      <sc-if value="{{ isFleet }}" hint-placeholder-val="{{ true }}">
+      <div data-screen-label="Fleet" style="padding:6px 22px 26px;animation:zfFade .45s ease both;">
+        <div style="display:flex;align-items:center;gap:14px;padding:8px 0 16px;">
+          <button onClick="{{ goHome }}" style="width:38px;height:38px;border-radius:50%;border:1px solid rgba(212,175,55,.28);background:transparent;color:#d4af37;cursor:pointer;display:flex;align-items:center;justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <div>
+            <div style="font-family:'Cinzel',serif;font-size:13px;letter-spacing:.2em;color:#efe9da;">THE FLEET</div>
+            <div style="font-size:10px;letter-spacing:.16em;color:#a98f3f;margin-top:2px;">SPORT & LUXURY · BATUMI</div>
+          </div>
+        </div>
+
+        <p style="margin:2px 0 20px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:19px;color:rgba(239,233,218,.7);line-height:1.4;">A curated stable. Each car delivered, detailed and fully fuelled to you.</p>
+
+        <div style="display:flex;flex-direction:column;gap:18px;">
+          <sc-for list="{{ cars }}" as="car" hint-placeholder-count="3">
+          <div onClick="{{ car.open }}" style="position:relative;cursor:pointer;border-radius:22px;overflow:hidden;border:1px solid rgba(212,175,55,.16);background:#0c0c10;">
+            <div style="position:relative;height:184px;">
+              <image-slot id="{{ car.slotId }}" shape="rect" placeholder="{{ car.name }}" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot>
+              <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg, rgba(7,7,10,.1) 0%, rgba(7,7,10,.2) 45%, rgba(7,7,10,.92) 100%);"></div>
+              <div style="position:absolute;top:14px;left:16px;pointer-events:none;font-size:9px;letter-spacing:.24em;color:#1a1408;background:linear-gradient(100deg,#f3d98b,#d4af37);padding:5px 10px;border-radius:20px;font-weight:500;">{{ car.badge }}</div>
+              <div style="position:absolute;bottom:14px;left:18px;right:18px;pointer-events:none;display:flex;justify-content:space-between;align-items:flex-end;">
+                <div>
+                  <div style="font-size:10px;letter-spacing:.2em;color:#cdb96a;">{{ car.make }}</div>
+                  <div style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:500;color:#f6f1e2;line-height:1.05;">{{ car.model }}</div>
+                </div>
+                <div style="text-align:right;">
+                  <div style="font-size:9px;letter-spacing:.16em;color:rgba(239,233,218,.5);">FROM</div>
+                  <div style="font-size:12px;letter-spacing:.06em;color:#e6c869;font-weight:500;">On request</div>
+                </div>
+              </div>
+            </div>
+            <div style="display:flex;border-top:1px solid rgba(212,175,55,.12);">
+              <sc-for list="{{ car.quick }}" as="q" hint-placeholder-count="3">
+              <div style="flex:1;padding:11px 6px;text-align:center;border-right:1px solid rgba(212,175,55,.08);">
+                <div style="font-size:13px;color:#f0ead8;font-weight:500;">{{ q.value }}</div>
+                <div style="font-size:8.5px;letter-spacing:.14em;color:rgba(239,233,218,.42);margin-top:2px;">{{ q.label }}</div>
+              </div>
+              </sc-for>
+            </div>
+          </div>
+          </sc-for>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ============ CAR DETAIL ============ -->
+      <sc-if value="{{ isCarDetail }}" hint-placeholder-val="{{ true }}">
+      <div data-screen-label="Car Detail" style="animation:zfFade .45s ease both;">
+        <div style="position:relative;height:340px;">
+          <image-slot id="{{ activeCar.slotId }}" shape="rect" placeholder="{{ activeCar.name }}" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot>
+          <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg, rgba(7,7,10,.55) 0%, rgba(7,7,10,.05) 30%, rgba(7,7,10,.35) 62%, #07070a 100%);"></div>
+          <button onClick="{{ goFleet }}" style="position:absolute;top:14px;left:18px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(212,175,55,.35);background:rgba(7,7,10,.5);backdrop-filter:blur(6px);color:#f3d98b;cursor:pointer;display:flex;align-items:center;justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <div style="position:absolute;top:20px;right:18px;pointer-events:none;font-size:9px;letter-spacing:.24em;color:#1a1408;background:linear-gradient(100deg,#f3d98b,#d4af37);padding:6px 12px;border-radius:20px;font-weight:600;">{{ activeCar.badge }}</div>
+          <div style="position:absolute;bottom:12px;left:24px;right:24px;pointer-events:none;">
+            <div style="font-size:11px;letter-spacing:.24em;color:#cdb96a;">{{ activeCar.make }}</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:500;color:#f7f2e4;line-height:1;">{{ activeCar.model }}</div>
+          </div>
+        </div>
+
+        <div style="padding:6px 24px 30px;">
+          <p style="margin:6px 0 22px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:19px;line-height:1.5;color:rgba(239,233,218,.78);">{{ activeCar.tagline }}</p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px;">
+            <sc-for list="{{ activeCar.specs }}" as="s" hint-placeholder-count="4">
+            <div style="border:1px solid rgba(212,175,55,.16);border-radius:16px;padding:15px 16px;background:linear-gradient(155deg,#141319,#0b0b0f);">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;background:linear-gradient(100deg,#f8edc2,#d4af37,#b8860b);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1;">{{ s.value }}</div>
+              <div style="font-size:9.5px;letter-spacing:.2em;color:rgba(239,233,218,.5);margin-top:7px;">{{ s.label }}</div>
+            </div>
+            </sc-for>
+          </div>
+
+          <div style="font-size:10px;letter-spacing:.28em;color:#a98f3f;margin-bottom:12px;">INCLUDED</div>
+          <div style="display:flex;flex-direction:column;gap:11px;margin-bottom:26px;">
+            <sc-for list="{{ activeCar.includes }}" as="inc" hint-placeholder-count="3">
+            <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:rgba(239,233,218,.78);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              {{ inc }}
+            </div>
+            </sc-for>
+          </div>
+
+          <div style="display:flex;align-items:center;justify-content:space-between;border:1px solid rgba(212,175,55,.16);border-radius:16px;padding:16px 18px;background:linear-gradient(120deg, rgba(212,175,55,.08), transparent);margin-bottom:18px;">
+            <div>
+              <div style="font-size:9.5px;letter-spacing:.2em;color:rgba(239,233,218,.5);">DAILY RESERVE</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:23px;color:#f3eede;font-style:italic;">Price on request</div>
+            </div>
+            <div style="font-size:10px;letter-spacing:.14em;color:#a98f3f;text-align:right;max-width:96px;line-height:1.4;">Best rate shared on chat</div>
+          </div>
+
+          <button onClick="{{ inquireCar }}" style="width:100%;cursor:pointer;background:linear-gradient(100deg,#f3d98b,#d4af37,#aa811f);color:#1a1408;border:none;border-radius:16px;padding:18px;font-family:'Cinzel',serif;font-weight:600;font-size:13px;letter-spacing:.14em;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 14px 38px rgba(212,175,55,.26);">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.4 1.3-1.94 1.38-.5.07-1.12.1-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.14-4.9-4.33-.14-.19-1.17-1.56-1.17-2.97 0-1.42.74-2.11 1-2.4.26-.29.57-.36.76-.36l.55.01c.18.01.41-.07.64.49.24.57.82 2 .89 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.17.29.74 1.22 1.59 1.98 1.1.98 2.02 1.29 2.31 1.43.29.14.46.12.63-.07.17-.19.73-.85.92-1.14.19-.29.39-.24.64-.14.26.09 1.66.78 1.95.92.29.14.48.21.55.33.07.12.07.68-.17 1.36z"/></svg>
+            INQUIRE ON WHATSAPP
+          </button>
+          <div style="text-align:center;margin-top:12px;font-size:10.5px;letter-spacing:.18em;color:rgba(239,233,218,.4);">DELIVERED ANYWHERE IN BATUMI</div>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ============ HELICOPTER ============ -->
+      <sc-if value="{{ isHeli }}" hint-placeholder-val="{{ true }}">
+      <div data-screen-label="Helicopter" style="animation:zfFade .45s ease both;">
+        <div style="position:relative;height:300px;">
+          <image-slot id="zf-heli" shape="rect" placeholder="Private Helicopter" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot>
+          <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg, rgba(7,7,10,.5) 0%, rgba(7,7,10,.05) 32%, rgba(7,7,10,.4) 62%, #07070a 100%);"></div>
+          <button onClick="{{ goHome }}" style="position:absolute;top:14px;left:18px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(212,175,55,.35);background:rgba(7,7,10,.5);backdrop-filter:blur(6px);color:#f3d98b;cursor:pointer;display:flex;align-items:center;justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <div style="position:absolute;bottom:14px;left:24px;right:24px;pointer-events:none;">
+            <div style="font-size:11px;letter-spacing:.24em;color:#cdb96a;">PRIVATE AVIATION</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:500;color:#f7f2e4;line-height:1;">Helicopter Charter</div>
+          </div>
+        </div>
+
+        <div style="padding:6px 24px 30px;">
+          <p style="margin:6px 0 24px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:19px;line-height:1.5;color:rgba(239,233,218,.78);">Lift above the Black Sea coastline. Champagne aboard, pilot briefed, departing on your schedule.</p>
+
+          <div style="font-size:10px;letter-spacing:.28em;color:#a98f3f;margin-bottom:14px;">FLIGHTS</div>
+          <div style="display:flex;flex-direction:column;gap:13px;margin-bottom:26px;">
+            <sc-for list="{{ heliRoutes }}" as="r" hint-placeholder-count="3">
+            <div style="display:flex;align-items:center;gap:15px;border:1px solid rgba(212,175,55,.16);border-radius:16px;padding:16px;background:linear-gradient(155deg,#141319,#0b0b0f);">
+              <div style="width:46px;height:46px;flex:0 0 auto;border-radius:13px;border:1px solid rgba(212,175,55,.28);display:flex;align-items:center;justify-content:center;color:#e6c869;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h12M9 3v2M9 5v6m0 0H6m3 0h3m-3 0v3m0 0H7l-1 3m4-3h2.5a3.5 3.5 0 0 0 3.5-3.5V9l5 1"/></svg>
+              </div>
+              <div style="flex:1;">
+                <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:#f3eede;line-height:1.1;">{{ r.name }}</div>
+                <div style="font-size:11.5px;color:rgba(239,233,218,.55);margin-top:3px;">{{ r.meta }}</div>
+              </div>
+              <div style="text-align:right;font-size:11px;color:#cdb96a;letter-spacing:.05em;">{{ r.duration }}</div>
+            </div>
+            </sc-for>
+          </div>
+
+          <div style="display:flex;gap:12px;margin-bottom:24px;">
+            <sc-for list="{{ heliSpecs }}" as="s" hint-placeholder-count="3">
+            <div style="flex:1;text-align:center;border:1px solid rgba(212,175,55,.16);border-radius:16px;padding:15px 8px;background:linear-gradient(155deg,#141319,#0b0b0f);">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;color:#f3eede;">{{ s.value }}</div>
+              <div style="font-size:9px;letter-spacing:.16em;color:rgba(239,233,218,.5);margin-top:5px;">{{ s.label }}</div>
+            </div>
+            </sc-for>
+          </div>
+
+          <button onClick="{{ inquireHeli }}" style="width:100%;cursor:pointer;background:linear-gradient(100deg,#f3d98b,#d4af37,#aa811f);color:#1a1408;border:none;border-radius:16px;padding:18px;font-family:'Cinzel',serif;font-weight:600;font-size:13px;letter-spacing:.14em;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 14px 38px rgba(212,175,55,.26);">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.4 1.3-1.94 1.38-.5.07-1.12.1-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.14-4.9-4.33-.14-.19-1.17-1.56-1.17-2.97 0-1.42.74-2.11 1-2.4.26-.29.57-.36.76-.36l.55.01c.18.01.41-.07.64.49.24.57.82 2 .89 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.17.29.74 1.22 1.59 1.98 1.1.98 2.02 1.29 2.31 1.43.29.14.46.12.63-.07.17-.19.73-.85.92-1.14.19-.29.39-.24.64-.14.26.09 1.66.78 1.95.92.29.14.48.21.55.33.07.12.07.68-.17 1.36z"/></svg>
+            REQUEST THIS FLIGHT
+          </button>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ============ BOAT ============ -->
+      <sc-if value="{{ isBoat }}" hint-placeholder-val="{{ true }}">
+      <div data-screen-label="Yacht" style="animation:zfFade .45s ease both;">
+        <div style="position:relative;height:300px;">
+          <image-slot id="zf-boat" shape="rect" placeholder="Private Yacht" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot>
+          <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg, rgba(7,7,10,.5) 0%, rgba(7,7,10,.05) 32%, rgba(7,7,10,.4) 62%, #07070a 100%);"></div>
+          <button onClick="{{ goHome }}" style="position:absolute;top:14px;left:18px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(212,175,55,.35);background:rgba(7,7,10,.5);backdrop-filter:blur(6px);color:#f3d98b;cursor:pointer;display:flex;align-items:center;justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <div style="position:absolute;bottom:14px;left:24px;right:24px;pointer-events:none;">
+            <div style="font-size:11px;letter-spacing:.24em;color:#cdb96a;">ON THE BLACK SEA</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:500;color:#f7f2e4;line-height:1;">Yacht & Boat</div>
+          </div>
+        </div>
+
+        <div style="padding:6px 24px 30px;">
+          <p style="margin:6px 0 24px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:19px;line-height:1.5;color:rgba(239,233,218,.78);">Private charters from Batumi marina — captain, crew and onboard concierge, sunset to starlight.</p>
+
+          <div style="font-size:10px;letter-spacing:.28em;color:#a98f3f;margin-bottom:14px;">EXPERIENCES</div>
+          <div style="display:flex;flex-direction:column;gap:13px;margin-bottom:26px;">
+            <sc-for list="{{ boatExps }}" as="r" hint-placeholder-count="3">
+            <div style="display:flex;align-items:center;gap:15px;border:1px solid rgba(212,175,55,.16);border-radius:16px;padding:16px;background:linear-gradient(155deg,#141319,#0b0b0f);">
+              <div style="width:46px;height:46px;flex:0 0 auto;border-radius:13px;border:1px solid rgba(212,175,55,.28);display:flex;align-items:center;justify-content:center;color:#e6c869;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18s1.5 1 3 1 3-1 3-1 1.5 1 3 1 3-1 3-1 1.5 1 3 1M5 16l-1-5h16l-2 5M12 11V4M7 7l5-3 5 3"/></svg>
+              </div>
+              <div style="flex:1;">
+                <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:#f3eede;line-height:1.1;">{{ r.name }}</div>
+                <div style="font-size:11.5px;color:rgba(239,233,218,.55);margin-top:3px;">{{ r.meta }}</div>
+              </div>
+              <div style="text-align:right;font-size:11px;color:#cdb96a;letter-spacing:.05em;">{{ r.duration }}</div>
+            </div>
+            </sc-for>
+          </div>
+
+          <div style="display:flex;gap:12px;margin-bottom:24px;">
+            <sc-for list="{{ boatSpecs }}" as="s" hint-placeholder-count="3">
+            <div style="flex:1;text-align:center;border:1px solid rgba(212,175,55,.16);border-radius:16px;padding:15px 8px;background:linear-gradient(155deg,#141319,#0b0b0f);">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;color:#f3eede;">{{ s.value }}</div>
+              <div style="font-size:9px;letter-spacing:.16em;color:rgba(239,233,218,.5);margin-top:5px;">{{ s.label }}</div>
+            </div>
+            </sc-for>
+          </div>
+
+          <button onClick="{{ inquireBoat }}" style="width:100%;cursor:pointer;background:linear-gradient(100deg,#f3d98b,#d4af37,#aa811f);color:#1a1408;border:none;border-radius:16px;padding:18px;font-family:'Cinzel',serif;font-weight:600;font-size:13px;letter-spacing:.14em;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 14px 38px rgba(212,175,55,.26);">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.4 1.3-1.94 1.38-.5.07-1.12.1-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.14-4.9-4.33-.14-.19-1.17-1.56-1.17-2.97 0-1.42.74-2.11 1-2.4.26-.29.57-.36.76-.36l.55.01c.18.01.41-.07.64.49.24.57.82 2 .89 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.17.29.74 1.22 1.59 1.98 1.1.98 2.02 1.29 2.31 1.43.29.14.46.12.63-.07.17-.19.73-.85.92-1.14.19-.29.39-.24.64-.14.26.09 1.66.78 1.95.92.29.14.48.21.55.33.07.12.07.68-.17 1.36z"/></svg>
+            CHARTER NOW
+          </button>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ============ AIRPORT TRANSFER ============ -->
+      <sc-if value="{{ isTransfer }}" hint-placeholder-val="{{ true }}">
+      <div data-screen-label="Airport Transfer" style="animation:zfFade .45s ease both;">
+        <div style="position:relative;height:300px;">
+          <image-slot id="zf-transfer" shape="rect" placeholder="Chauffeured Lux-Class Auto" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot>
+          <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg, rgba(7,7,10,.5) 0%, rgba(7,7,10,.05) 32%, rgba(7,7,10,.4) 62%, #07070a 100%);"></div>
+          <button onClick="{{ goHome }}" style="position:absolute;top:14px;left:18px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(212,175,55,.35);background:rgba(7,7,10,.5);backdrop-filter:blur(6px);color:#f3d98b;cursor:pointer;display:flex;align-items:center;justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <div style="position:absolute;bottom:14px;left:24px;right:24px;pointer-events:none;">
+            <div style="font-size:11px;letter-spacing:.24em;color:#cdb96a;">AIRPORT → CITY · CHAUFFEURED</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:500;color:#f7f2e4;line-height:1;">Airport Transfer</div>
+          </div>
+        </div>
+
+        <div style="padding:6px 24px 30px;">
+          <p style="margin:6px 0 24px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:19px;line-height:1.5;color:rgba(239,233,218,.78);">Met at the gate, name on the board. A lux-class auto and English-speaking chauffeur waiting — flight tracked, no waiting, ever.</p>
+
+          <div style="font-size:10px;letter-spacing:.28em;color:#a98f3f;margin-bottom:14px;">CHOOSE YOUR CLASS</div>
+          <div style="display:flex;flex-direction:column;gap:13px;margin-bottom:26px;">
+            <sc-for list="{{ transferClasses }}" as="r" hint-placeholder-count="3">
+            <div style="display:flex;align-items:center;gap:15px;border:1px solid rgba(212,175,55,.16);border-radius:16px;padding:16px;background:linear-gradient(155deg,#141319,#0b0b0f);">
+              <div style="width:46px;height:46px;flex:0 0 auto;border-radius:13px;border:1px solid rgba(212,175,55,.28);display:flex;align-items:center;justify-content:center;color:#e6c869;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13M5 13h14v4H5zM5 13v4m14-4v4M7 17v1.5M17 17v1.5"/><circle cx="7.5" cy="15" r="1"/><circle cx="16.5" cy="15" r="1"/></svg>
+              </div>
+              <div style="flex:1;">
+                <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:#f3eede;line-height:1.1;">{{ r.name }}</div>
+                <div style="font-size:11.5px;color:rgba(239,233,218,.55);margin-top:3px;">{{ r.meta }}</div>
+              </div>
+              <div style="text-align:right;font-size:11px;color:#cdb96a;letter-spacing:.05em;">{{ r.seats }}</div>
+            </div>
+            </sc-for>
+          </div>
+
+          <div style="display:flex;gap:12px;margin-bottom:24px;">
+            <sc-for list="{{ transferSpecs }}" as="s" hint-placeholder-count="3">
+            <div style="flex:1;text-align:center;border:1px solid rgba(212,175,55,.16);border-radius:16px;padding:15px 8px;background:linear-gradient(155deg,#141319,#0b0b0f);">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;color:#f3eede;">{{ s.value }}</div>
+              <div style="font-size:9px;letter-spacing:.16em;color:rgba(239,233,218,.5);margin-top:5px;">{{ s.label }}</div>
+            </div>
+            </sc-for>
+          </div>
+
+          <div style="font-size:10px;letter-spacing:.28em;color:#a98f3f;margin-bottom:12px;">INCLUDED</div>
+          <div style="display:flex;flex-direction:column;gap:11px;margin-bottom:26px;">
+            <sc-for list="{{ transferIncludes }}" as="inc" hint-placeholder-count="3">
+            <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:rgba(239,233,218,.78);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              {{ inc }}
+            </div>
+            </sc-for>
+          </div>
+
+          <button onClick="{{ inquireTransfer }}" style="width:100%;cursor:pointer;background:linear-gradient(100deg,#f3d98b,#d4af37,#aa811f);color:#1a1408;border:none;border-radius:16px;padding:18px;font-family:'Cinzel',serif;font-weight:600;font-size:13px;letter-spacing:.14em;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 14px 38px rgba(212,175,55,.26);">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.4 1.3-1.94 1.38-.5.07-1.12.1-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.14-4.9-4.33-.14-.19-1.17-1.56-1.17-2.97 0-1.42.74-2.11 1-2.4.26-.29.57-.36.76-.36l.55.01c.18.01.41-.07.64.49.24.57.82 2 .89 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.17.29.74 1.22 1.59 1.98 1.1.98 2.02 1.29 2.31 1.43.29.14.46.12.63-.07.17-.19.73-.85.92-1.14.19-.29.39-.24.64-.14.26.09 1.66.78 1.95.92.29.14.48.21.55.33.07.12.07.68-.17 1.36z"/></svg>
+            BOOK MY TRANSFER
+          </button>
+          <div style="text-align:center;margin-top:12px;font-size:10.5px;letter-spacing:.18em;color:rgba(239,233,218,.4);">BATUMI · KUTAISI · TBILISI</div>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ============ NEWS FEED ============ -->
+      <sc-if value="{{ isNews }}" hint-placeholder-val="{{ true }}">
+      <div data-screen-label="News Feed" style="padding:6px 22px 26px;animation:zfFade .45s ease both;">
+        <div style="display:flex;align-items:center;gap:14px;padding:8px 0 16px;">
+          <button onClick="{{ goHome }}" style="width:38px;height:38px;border-radius:50%;border:1px solid rgba(212,175,55,.28);background:transparent;color:#d4af37;cursor:pointer;display:flex;align-items:center;justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <div>
+            <div style="font-family:'Cinzel',serif;font-size:13px;letter-spacing:.2em;color:#efe9da;">NEWS FEED</div>
+            <div style="font-size:10px;letter-spacing:.16em;color:#a98f3f;margin-top:2px;">FROM THE CLUB · BATUMI</div>
+          </div>
+        </div>
+
+        <p style="margin:2px 0 20px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:19px;color:rgba(239,233,218,.7);line-height:1.4;">New arrivals, events and the latest from the Zeroflex stable.</p>
+
+        <div style="display:flex;flex-direction:column;gap:18px;">
+          <sc-for list="{{ news }}" as="n" hint-placeholder-count="3">
+          <div onClick="{{ goConcierge }}" style="position:relative;cursor:pointer;border-radius:22px;overflow:hidden;border:1px solid rgba(212,175,55,.16);background:#0c0c10;">
+            <div style="position:relative;height:172px;">
+              <image-slot id="{{ n.slotId }}" shape="rect" placeholder="{{ n.title }}" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot>
+              <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg, rgba(7,7,10,.1) 0%, rgba(7,7,10,.2) 45%, rgba(7,7,10,.92) 100%);"></div>
+              <div style="position:absolute;top:14px;left:16px;pointer-events:none;font-size:9px;letter-spacing:.24em;color:#1a1408;background:linear-gradient(100deg,#f3d98b,#d4af37);padding:5px 10px;border-radius:20px;font-weight:500;">{{ n.tag }}</div>
+            </div>
+            <div style="padding:16px 18px 18px;">
+              <div style="font-size:9.5px;letter-spacing:.2em;color:#a98f3f;margin-bottom:7px;">{{ n.date }}</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:500;color:#f3eede;line-height:1.1;">{{ n.title }}</div>
+              <div style="font-size:12px;color:rgba(239,233,218,.55);margin-top:7px;line-height:1.5;">{{ n.blurb }}</div>
+              <div style="display:flex;align-items:center;gap:5px;margin-top:12px;color:#d4af37;font-size:11px;letter-spacing:.14em;">ENQUIRE <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+            </div>
+          </div>
+          </sc-for>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ============ MEMBERSHIP ============ -->
+      <sc-if value="{{ isMembership }}" hint-placeholder-val="{{ true }}">
+      <div data-screen-label="Membership" style="padding:6px 24px 30px;animation:zfFade .45s ease both;">
+        <div style="display:flex;align-items:center;gap:14px;padding:8px 0 22px;">
+          <button onClick="{{ goHome }}" style="width:38px;height:38px;border-radius:50%;border:1px solid rgba(212,175,55,.28);background:transparent;color:#d4af37;cursor:pointer;display:flex;align-items:center;justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <div style="font-family:'Cinzel',serif;font-size:13px;letter-spacing:.2em;color:#efe9da;">MEMBERSHIP</div>
+        </div>
+
+        <div style="text-align:center;margin-bottom:26px;">
+          <div style="width:78px;height:78px;margin:0 auto 18px;position:relative;display:flex;align-items:center;justify-content:center;">
+            <div style="position:absolute;inset:0;border-radius:50%;border:1px solid rgba(212,175,55,.2);animation:zfGlow 5s ease-in-out infinite;"></div>
+            <div style="width:42px;height:42px;animation:zfPulse 4s ease-in-out infinite;"><svg viewBox="0 0 100 100" style="width:100%;height:100%"><path d="M50 84 L12 22 L88 22 Z" fill="none" stroke="url(#zfGold)" stroke-width="3"/><path d="M50 60 L31 33 L69 33 Z" fill="url(#zfGold)"/></svg></div>
+          </div>
+          <div style="font-size:10px;letter-spacing:.34em;color:#a98f3f;margin-bottom:10px;">JOIN THE CLUB</div>
+          <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:33px;line-height:1.1;color:#f3eede;">The doors are <span style="font-style:italic;background:linear-gradient(100deg,#f8edc2,#d4af37,#b8860b);-webkit-background-clip:text;background-clip:text;color:transparent;">open to all.</span></h2>
+          <p style="margin:14px auto 0;max-width:280px;font-size:13px;line-height:1.6;color:rgba(239,233,218,.6);">Everyone is welcome at Zeroflex. Say hello on WhatsApp and your concierge takes care of the rest.</p>
+        </div>
+
+        <div style="border:1px solid rgba(212,175,55,.16);border-radius:20px;background:linear-gradient(155deg,#141319,#0b0b0f);padding:20px 22px;margin-bottom:24px;">
+          <div style="font-size:10px;letter-spacing:.28em;color:#a98f3f;margin-bottom:16px;">WHAT YOU GET</div>
+          <div style="display:flex;flex-direction:column;gap:15px;">
+            <sc-for list="{{ benefits }}" as="b" hint-placeholder-count="4">
+            <div style="display:flex;align-items:flex-start;gap:13px;">
+              <div style="width:26px;height:26px;flex:0 0 auto;border-radius:50%;border:1px solid rgba(212,175,55,.3);display:flex;align-items:center;justify-content:center;color:#d4af37;margin-top:1px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+              <div>
+                <div style="font-size:13.5px;color:#f0ead8;font-weight:500;">{{ b.title }}</div>
+                <div style="font-size:11.5px;color:rgba(239,233,218,.52);margin-top:2px;line-height:1.4;">{{ b.desc }}</div>
+              </div>
+            </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <button onClick="{{ applyMembership }}" style="width:100%;cursor:pointer;background:linear-gradient(100deg,#f3d98b,#d4af37,#aa811f);color:#1a1408;border:none;border-radius:16px;padding:18px;font-family:'Cinzel',serif;font-weight:600;font-size:13px;letter-spacing:.14em;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 14px 38px rgba(212,175,55,.26);">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.4 1.3-1.94 1.38-.5.07-1.12.1-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.14-4.9-4.33-.14-.19-1.17-1.56-1.17-2.97 0-1.42.74-2.11 1-2.4.26-.29.57-.36.76-.36l.55.01c.18.01.41-.07.64.49.24.57.82 2 .89 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.17.29.74 1.22 1.59 1.98 1.1.98 2.02 1.29 2.31 1.43.29.14.46.12.63-.07.17-.19.73-.85.92-1.14.19-.29.39-.24.64-.14.26.09 1.66.78 1.95.92.29.14.48.21.55.33.07.12.07.68-.17 1.36z"/></svg>
+          APPLY VIA WHATSAPP
+        </button>
+        <div style="text-align:center;margin-top:12px;font-size:10.5px;letter-spacing:.18em;color:rgba(239,233,218,.4);">FRIENDLY · FAST · BATUMI</div>
+      </div>
+      </sc-if>
+
+      <!-- ============ WHATSAPP CONFIRM ============ -->
+      <sc-if value="{{ isConfirm }}" hint-placeholder-val="{{ true }}">
+      <div data-screen-label="WhatsApp" style="min-height:100%;display:flex;flex-direction:column;padding:6px 26px 30px;animation:zfFade .45s ease both;background:radial-gradient(120% 60% at 50% 0%, #13160f 0%, #07070a 55%);">
+        <div style="display:flex;align-items:center;gap:14px;padding:8px 0 10px;">
+          <button onClick="{{ goBack }}" style="width:38px;height:38px;border-radius:50%;border:1px solid rgba(212,175,55,.28);background:transparent;color:#d4af37;cursor:pointer;display:flex;align-items:center;justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <div style="font-family:'Cinzel',serif;font-size:13px;letter-spacing:.2em;color:#efe9da;">CONCIERGE</div>
+        </div>
+
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
+          <div style="width:84px;height:84px;border-radius:50%;background:linear-gradient(135deg,#25d366,#128c4b);display:flex;align-items:center;justify-content:center;box-shadow:0 16px 44px rgba(37,211,102,.3);margin-bottom:22px;">
+            <svg width="42" height="42" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.4 1.3-1.94 1.38-.5.07-1.12.1-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.14-4.9-4.33-.14-.19-1.17-1.56-1.17-2.97 0-1.42.74-2.11 1-2.4.26-.29.57-.36.76-.36l.55.01c.18.01.41-.07.64.49.24.57.82 2 .89 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.17.29.74 1.22 1.59 1.98 1.1.98 2.02 1.29 2.31 1.43.29.14.46.12.63-.07.17-.19.73-.85.92-1.14.19-.29.39-.24.64-.14.26.09 1.66.78 1.95.92.29.14.48.21.55.33.07.12.07.68-.17 1.36z"/></svg>
+          </div>
+          <div style="font-size:10px;letter-spacing:.3em;color:#a98f3f;margin-bottom:10px;">CONNECTING YOU</div>
+          <h2 style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:30px;color:#f3eede;line-height:1.15;">Your concierge is <span style="font-style:italic;background:linear-gradient(100deg,#f8edc2,#d4af37,#b8860b);-webkit-background-clip:text;background-clip:text;color:transparent;">standing by.</span></h2>
+          <p style="margin:8px 0 0;font-size:13px;color:rgba(239,233,218,.58);max-width:280px;line-height:1.55;">We'll continue privately on WhatsApp. Here's the message we'll open with:</p>
+
+          <div style="margin:24px 0 8px;width:100%;text-align:left;border:1px solid rgba(212,175,55,.18);border-radius:18px;background:linear-gradient(155deg,#141319,#0b0b0f);padding:18px 20px;">
+            <div style="font-size:9.5px;letter-spacing:.2em;color:#a98f3f;margin-bottom:8px;">REGARDING</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#f3eede;margin-bottom:14px;">{{ inquirySubject }}</div>
+            <div style="border-top:1px solid rgba(212,175,55,.12);padding-top:14px;font-size:13px;line-height:1.6;color:rgba(239,233,218,.72);">“{{ inquiryMessage }}”</div>
+          </div>
+        </div>
+
+        <button onClick="{{ openWhatsApp }}" style="width:100%;cursor:pointer;background:linear-gradient(100deg,#25d366,#1aa851);color:#04220f;border:none;border-radius:16px;padding:18px;font-family:'Cinzel',serif;font-weight:600;font-size:13px;letter-spacing:.12em;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 14px 38px rgba(37,211,102,.28);margin-top:8px;">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2z"/></svg>
+          OPEN WHATSAPP
+        </button>
+        <div style="text-align:center;margin-top:12px;font-size:11px;letter-spacing:.12em;color:rgba(239,233,218,.5);">+995 595 636 009 · Mon–Sun, 24h</div>
+      </div>
+      </sc-if>
+
+    </div>
+
+    <!-- ===================== BOTTOM NAV ===================== -->
+    <sc-if value="{{ showNav }}" hint-placeholder-val="{{ true }}">
+    <div style="flex:0 0 auto;position:relative;height:84px;background:linear-gradient(0deg,#0a0a0e 60%, rgba(10,10,14,0));border-top:1px solid rgba(212,175,55,.12);display:flex;align-items:center;justify-content:space-around;padding:0 40px 14px;z-index:50;">
+      <button onClick="{{ goHome }}" style="background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;color:{{ navHome }};">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 3l9 7.5M5 9.5V20h5v-6h4v6h5V9.5"/></svg>
+        <span style="font-size:8.5px;letter-spacing:.12em;">HOME</span>
+      </button>
+      <button onClick="{{ goConcierge }}" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:50%;background:radial-gradient(circle at 50% 35%, rgba(212,175,55,.28), rgba(10,10,14,.4));border:1px solid rgba(212,175,55,.45);margin-top:-22px;box-shadow:0 8px 26px rgba(212,175,55,.26);color:#1a1408;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#zfGold)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </button>
+      <button onClick="{{ goNews }}" style="background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;color:{{ navNews }};">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 8h2a1 1 0 0 1 1 1v8a2 2 0 0 1-2 2M7 8h7M7 12h7M7 16h4"/></svg>
+        <span style="font-size:8.5px;letter-spacing:.12em;">NEWS</span>
+      </button>
+    </div>
+    </sc-if>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { screen: 'splash', activeCar: null, inquiry: '', returnTo: 'home' };
+
+  get cars() {
+    return [
+      { id: 'lambo', slotId: 'zf-car-lambo', make: 'LAMBORGHINI', model: 'Huracán EVO', badge: 'SPYDER',
+        tagline: 'A naturally-aspirated V10 that announces your arrival before you do.',
+        quick: [{label:'TOP SPEED',value:'325'},{label:'0–100',value:'3.1s'},{label:'POWER',value:'640'}],
+        specs: [{label:'TOP SPEED KM/H',value:'325'},{label:'0–100 KM/H',value:'3.1s'},{label:'HORSEPOWER',value:'640'},{label:'ENGINE',value:'V10'}],
+        includes: ['Delivery & collection in Batumi','Full insurance & fuel','Personal handover specialist'] },
+      { id: 'ferrari', slotId: 'zf-car-ferrari', make: 'FERRARI', model: '488 Spider', badge: 'OPEN TOP',
+        tagline: 'Roof down along the boulevard — the most theatrical way to see the coast.',
+        quick: [{label:'TOP SPEED',value:'330'},{label:'0–100',value:'3.0s'},{label:'POWER',value:'670'}],
+        specs: [{label:'TOP SPEED KM/H',value:'330'},{label:'0–100 KM/H',value:'3.0s'},{label:'HORSEPOWER',value:'670'},{label:'ENGINE',value:'V8 Turbo'}],
+        includes: ['Delivery & collection in Batumi','Full insurance & fuel','Personal handover specialist'] },
+      { id: 'rolls', slotId: 'zf-car-rolls', make: 'ROLLS-ROYCE', model: 'Cullinan', badge: 'BLACK BADGE',
+        tagline: 'Effortless presence. Whisper-quiet luxury for the evenings that matter.',
+        quick: [{label:'SEATS',value:'5'},{label:'0–100',value:'4.9s'},{label:'POWER',value:'600'}],
+        specs: [{label:'GUESTS',value:'5'},{label:'0–100 KM/H',value:'4.9s'},{label:'HORSEPOWER',value:'600'},{label:'ENGINE',value:'V12'}],
+        includes: ['Chauffeur on request','Full insurance & fuel','Champagne cooler stocked'] },
+      { id: 'g63', slotId: 'zf-car-g63', make: 'MERCEDES-AMG', model: 'G 63', badge: 'ICON',
+        tagline: 'The statement that goes everywhere — from the marina to the mountains.',
+        quick: [{label:'SEATS',value:'5'},{label:'0–100',value:'4.5s'},{label:'POWER',value:'585'}],
+        specs: [{label:'GUESTS',value:'5'},{label:'0–100 KM/H',value:'4.5s'},{label:'HORSEPOWER',value:'585'},{label:'ENGINE',value:'V8 Biturbo'}],
+        includes: ['Delivery & collection in Batumi','Full insurance & fuel','Personal handover specialist'] },
+      { id: 'porsche', slotId: 'zf-car-porsche', make: 'PORSCHE', model: '911 Turbo S', badge: 'PRECISION',
+        tagline: 'The benchmark. Everyday usable, track-day devastating.',
+        quick: [{label:'TOP SPEED',value:'330'},{label:'0–100',value:'2.7s'},{label:'POWER',value:'650'}],
+        specs: [{label:'TOP SPEED KM/H',value:'330'},{label:'0–100 KM/H',value:'2.7s'},{label:'HORSEPOWER',value:'650'},{label:'ENGINE',value:'Flat-6'}],
+        includes: ['Delivery & collection in Batumi','Full insurance & fuel','Personal handover specialist'] },
+    ];
+  }
+
+  get services() {
+    return [
+      { key: 'cars', name: 'Sport & Luxury Cars', sub: 'Lamborghini · Ferrari · Rolls-Royce', tag: 'FLEET', open: () => this.go('fleet') },
+      { key: 'heli', name: 'Private Helicopter', sub: 'Coastal flights & transfers', tag: 'AVIATION', open: () => this.go('heli') },
+      { key: 'boat', name: 'Yacht & Boat', sub: 'Charters on the Black Sea', tag: 'MARINE', open: () => this.go('boat') },
+      { key: 'transfer', name: 'Airport Transfer', sub: 'Lux-class autos · chauffeured', tag: 'TRANSFER', open: () => this.go('transfer') },
+    ];
+  }
+
+  get heliRoutes() {
+    return [
+      { name: 'Batumi Panoramic', meta: 'City skyline & coastline loop', duration: '20 min' },
+      { name: 'Black Sea Coast', meta: 'Scenic shoreline & mountains', duration: '45 min' },
+      { name: 'Private Transfer', meta: 'Door-to-door, anywhere in Adjara', duration: 'On request' },
+    ];
+  }
+  get heliSpecs() { return [{label:'GUESTS',value:'4'},{label:'CHAMPAGNE',value:'Yes'},{label:'NOTICE',value:'2h'}]; }
+
+  get boatExps() {
+    return [
+      { name: 'Sunset Cruise', meta: 'Golden hour with canapés & wine', duration: '2 hrs' },
+      { name: 'Full-Day Charter', meta: 'Swim stops, lunch, full crew', duration: '8 hrs' },
+      { name: 'Black Sea Expedition', meta: 'Bespoke multi-day voyage', duration: 'Custom' },
+    ];
+  }
+  get boatSpecs() { return [{label:'GUESTS',value:'10'},{label:'CREW',value:'Full'},{label:'CONCIERGE',value:'Onboard'}]; }
+
+  get transferClasses() {
+    return [
+      { name: 'Mercedes S-Class', meta: 'Executive sedan · leather & climate', seats: '3 pax' },
+      { name: 'Mercedes-Maybach', meta: 'First-class rear cabin & footrests', seats: '2 pax' },
+      { name: 'Mercedes V-Class', meta: 'Premium van · family & luggage', seats: '6 pax' },
+      { name: 'Range Rover Autobiography', meta: 'Luxury SUV · all-terrain comfort', seats: '4 pax' },
+    ];
+  }
+  get transferSpecs() { return [{label:'FLIGHT TRACKED',value:'Yes'},{label:'WAIT TIME',value:'Free'},{label:'MEET & GREET',value:'Incl.'}]; }
+  get transferIncludes() {
+    return ['Name-board greeting at arrivals','Flight tracking — we adjust to delays','Bottled water & onboard Wi-Fi','Door-to-door, anywhere in Adjara'];
+  }
+
+  get news() {
+    return [
+      { slotId: 'zf-news-1', tag: 'NEW ARRIVAL', date: 'JUNE 2026', title: 'Maybach S680 joins the fleet',
+        blurb: 'Our most refined airport transfer yet — first-class rear cabin, now bookable.' },
+      { slotId: 'zf-news-2', tag: 'EVENT', date: 'JUNE 2026', title: 'Sunset yacht social on the Black Sea',
+        blurb: 'A members\u2019 evening at the marina — champagne, canapés and a coastal cruise.' },
+      { slotId: 'zf-news-3', tag: 'EXPERIENCE', date: 'MAY 2026', title: 'Helicopter & supercar weekend',
+        blurb: 'Coastal flight by day, Huracán along the boulevard by night. Limited dates.' },
+    ];
+  }
+
+  get benefits() {
+    return [
+      { title: 'Priority fleet access', desc: 'First call on every car, flight and yacht.' },
+      { title: '24/7 personal concierge', desc: 'One contact for every arrangement, day or night.' },
+      { title: 'Discreet, confidential service', desc: 'Private handovers, no public pricing, total privacy.' },
+      { title: 'Curated experiences', desc: 'Hand-picked events and trips across Batumi.' },
+    ];
+  }
+
+  go(screen) { this.setState({ screen }); this.scrollTop(); }
+  scrollTop() {
+    requestAnimationFrame(() => {
+      const el = this.base && this.base.querySelector ? this.base.querySelector('.zf-scroll') : document.querySelector('.zf-scroll');
+      if (el) el.scrollTop = 0;
+    });
+  }
+  enter() { this.go('home'); }
+  openCar(car) { this.setState({ activeCar: car, screen: 'carDetail' }); this.scrollTop(); }
+  inquire(subject, returnTo) { this.setState({ inquiry: subject, returnTo: returnTo || 'home', screen: 'confirm' }); this.scrollTop(); }
+
+  message() {
+    const subj = this.state.inquiry || 'the Zeroflex Club';
+    return `Hello Zeroflex Club — I would like to inquire about ${subj} in Batumi. Please share availability and the next steps.`;
+  }
+  waLink() { return 'https://wa.me/995595636009?text=' + encodeURIComponent(this.message()); }
+  openWhatsApp() { window.open(this.waLink(), '_blank'); }
+
+  renderVals() {
+    const s = this.state.screen;
+    const ACTIVE = '#e6c869';
+    const IDLE = 'rgba(239,233,218,.42)';
+    const car = this.state.activeCar || this.cars[0];
+    return {
+      isSplash: s === 'splash', isHome: s === 'home', isFleet: s === 'fleet',
+      isCarDetail: s === 'carDetail', isHeli: s === 'heli', isBoat: s === 'boat',
+      isMembership: s === 'membership', isConfirm: s === 'confirm',
+      isTransfer: s === 'transfer', isNews: s === 'news',
+      showChrome: s !== 'splash',
+      showNav: s !== 'splash' && s !== 'confirm',
+      navHome: s === 'home' ? ACTIVE : IDLE,
+      navNews: s === 'news' ? ACTIVE : IDLE,
+      navFleet: (s === 'fleet' || s === 'carDetail') ? ACTIVE : IDLE,
+      navConcierge: IDLE,
+      navMember: s === 'membership' ? ACTIVE : IDLE,
+      cars: this.cars.map(c => ({ ...c, open: () => this.openCar(c) })),
+      services: this.services,
+      heliRoutes: this.heliRoutes, heliSpecs: this.heliSpecs,
+      boatExps: this.boatExps, boatSpecs: this.boatSpecs,
+      transferClasses: this.transferClasses, transferSpecs: this.transferSpecs, transferIncludes: this.transferIncludes,
+      benefits: this.benefits,
+      news: this.news,
+      activeCar: car,
+      inquirySubject: this.state.inquiry || 'General enquiry',
+      inquiryMessage: this.message(),
+      enter: () => this.enter(),
+      goHome: () => this.go('home'),
+      goFleet: () => this.go('fleet'),
+      goHeli: () => this.go('heli'),
+      goBoat: () => this.go('boat'),
+      goTransfer: () => this.go('transfer'),
+      goMembership: () => this.go('membership'),
+      goNews: () => this.go('news'),
+      goConcierge: () => this.inquire('a private concierge consultation', 'home'),
+      inquireCar: () => this.inquire(car.make + ' ' + car.model, 'carDetail'),
+      inquireHeli: () => this.inquire('a private helicopter flight', 'heli'),
+      inquireBoat: () => this.inquire('a private yacht charter', 'boat'),
+      inquireTransfer: () => this.inquire('a lux-class airport transfer', 'transfer'),
+      applyMembership: () => this.inquire('joining Zeroflex Club', 'membership'),
+      goBack: () => this.go(this.state.returnTo || 'home'),
+      openWhatsApp: () => this.openWhatsApp(),
+    };
+  }
+}
+</script>
+</body>
+</html>

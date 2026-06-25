@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zeroflex Club · Batumi — Supercars, Helicopters & Yachts</title>
+<meta name="description" content="Zeroflex Club, Batumi. Supercars, private helicopters, yachts and chauffeured airport transfers arranged through a single message. Open to all, 24/7 private concierge.">
+<meta name="theme-color" content="#050507">
+<!-- Open Graph -->
+<meta property="og:title" content="Zeroflex Club · Batumi">
+<meta property="og:description" content="Supercars, helicopters, yachts and airport transfers — your way, in Batumi.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:#050507;
+    font-family:'Jost',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    min-height:100dvh;
+  }
+  @keyframes zfSpin{to{transform:rotate(360deg)}}
+  @keyframes zfPulse{0%,100%{opacity:.85;filter:drop-shadow(0 0 14px rgba(212,175,55,.45))}50%{opacity:1;filter:drop-shadow(0 0 26px rgba(212,175,55,.8))}}
+  @keyframes zfRise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes zfFade{from{opacity:0}to{opacity:1}}
+  @keyframes zfGlow{0%,100%{box-shadow:0 0 50px rgba(212,175,55,.14),inset 0 0 36px rgba(212,175,55,.06)}50%{box-shadow:0 0 80px rgba(212,175,55,.26),inset 0 0 48px rgba(212,175,55,.1)}}
+  .zf-scroll::-webkit-scrollbar{width:0;height:0}
+  .zf-scroll{scrollbar-width:none;-ms-overflow-style:none}
+  .zf-stage{
+    min-height:100vh;min-height:100dvh;width:100%;
+    display:flex;align-items:center;justify-content:center;
+    padding:12px;
+    background:radial-gradient(140% 100% at 50% -10%, #14110a 0%, #08080b 45%, #050507 100%);
+    overflow:hidden;
+  }
+  .zf-frame{
+    position:relative;width:402px;height:858px;border-radius:46px;background:#07070a;
+    box-shadow:0 0 0 2px #1c1a14, 0 0 0 12px #100f0c, 0 40px 120px rgba(0,0,0,.7), 0 0 140px rgba(212,175,55,.08);
+    overflow:hidden;display:flex;flex-direction:column;flex:0 0 auto;
+    transform-origin:center center;
+  }
+  .zf-screen{display:none;}
+  .zf-screen.active{display:block;}
+  .zf-img{width:100%;height:100%;object-fit:cover;display:block;background:radial-gradient(120% 90% at 50% 0%, #1b1b22 0%, #0c0c10 70%);}
+  button{font-family:inherit;}
+</style>
+</head>
+<body>
+
+<div class="zf-stage">
+  <div class="zf-frame" id="zf-frame">
+
+    <!-- gold gradient def -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+      <linearGradient id="zfGold" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#f8edc2"/><stop offset="0.45" stop-color="#d4af37"/><stop offset="1" stop-color="#8f6e1c"/>
+      </linearGradient>
+    </defs></svg>
+
+    <!-- notch -->
+    <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:132px;height:30px;background:#000;border-bottom-left-radius:18px;border-bottom-right-radius:18px;z-index:60;"></div>
+
+    <!-- status bar -->
+    <div id="zf-statusbar" style="height:50px;flex:0 0 auto;display:flex;align-items:flex-end;justify-content:space-between;padding:0 26px 6px;z-index:55;color:#efe9da;font-size:13px;letter-spacing:.04em;">
+      <span style="font-weight:500;">9:41</span>
+      <span style="display:flex;gap:7px;align-items:center;opacity:.85;font-size:12px;">
+        <svg width="17" height="11" viewBox="0 0 18 12" fill="#efe9da"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="5" y="4" width="3" height="8" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M8 10.5l-.01.01M2 5.5a9 9 0 0 1 12 0M4.4 7.8a5.5 5.5 0 0 1 7.2 0" stroke="#efe9da" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <svg width="24" height="12" viewBox="0 0 26 12" fill="none"><rect x="1" y="1" width="21" height="10" rx="2.5" stroke="#efe9da" stroke-opacity=".5"/><rect x="3" y="3" width="15" height="6" rx="1" fill="#efe9da"/><rect x="23" y="4" width="2" height="4" rx="1" fill="#efe9da" fill-opacity=".5"/></svg>
+      </span>
+    </div>
+
+    <!-- ===================== CONTENT ===================== -->
+    <div class="zf-scroll" id="zf-scroll" style="flex:1 1 auto;overflow-y:auto;position:relative;">
+
+      <!-- ============ SPLASH ============ -->
+      <section class="zf-screen active" id="screen-splash">
+      <div style="position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 18%, #1a160c 0%, #0a0a0d 50%, #060608 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 38px;z-index:70;">
+        <div style="position:absolute;inset:0;background:radial-gradient(60% 40% at 50% 16%, rgba(212,175,55,.10), transparent 70%);"></div>
+
+        <div style="position:relative;width:262px;height:262px;display:flex;align-items:center;justify-content:center;margin-bottom:30px;animation:zfFade 1.2s ease both;">
+          <div style="position:absolute;inset:0;border-radius:50%;border:1px solid rgba(212,175,55,.16);animation:zfGlow 5s ease-in-out infinite;"></div>
+          <div style="position:absolute;inset:14px;border-radius:50%;background:conic-gradient(from 0deg, transparent 0 58%, rgba(248,237,194,.9) 78%, rgba(212,175,55,.2) 88%, transparent 100%);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 1.5px),#000 calc(100% - 1px));mask:radial-gradient(farthest-side,transparent calc(100% - 1.5px),#000 calc(100% - 1px));animation:zfSpin 7s linear infinite;"></div>
+          <div style="width:92px;height:92px;animation:zfPulse 4s ease-in-out infinite;">
+            <svg viewBox="0 0 100 100" style="width:100%;height:100%"><path d="M50 84 L12 22 L88 22 Z" fill="none" stroke="url(#zfGold)" stroke-width="2.4"/><path d="M50 60 L31 33 L69 33 Z" fill="url(#zfGold)"/></svg>
+          </div>
+        </div>
+
+        <div style="animation:zfRise 1s ease .3s both;">
+          <div style="font-family:'Cinzel',serif;font-weight:600;font-size:32px;letter-spacing:.42em;text-indent:.42em;background:linear-gradient(100deg,#f8edc2,#d4af37,#b8860b);-webkit-background-clip:text;background-clip:text;color:transparent;">ZEROFLEX</div>
+          <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-top:10px;">
+            <span style="width:38px;height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,.6));"></span>
+            <span style="font-family:'Cinzel',serif;font-size:12px;letter-spacing:.55em;text-indent:.55em;color:#cdb96a;">CLUB</span>
+            <span style="width:38px;height:1px;background:linear-gradient(270deg,transparent,rgba(212,175,55,.6));"></span>
+          </div>
+        </div>
+
+        <p style="animation:zfRise 1s ease .55s both;margin:28px 0 4px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:21px;line-height:1.45;color:rgba(239,233,218,.82);max-width:264px;">Supercars, helicopters and yachts — your way, in Batumi.</p>
+        <div style="animation:zfRise 1s ease .7s both;margin-top:14px;font-size:11px;letter-spacing:.34em;color:rgba(239,233,218,.5);">BATUMI · OPEN TO ALL</div>
+
+        <button onclick="zf.enter()" style="animation:zfRise 1s ease .9s both;margin-top:42px;cursor:pointer;background:linear-gradient(100deg,#f3d98b,#d4af37,#aa811f);color:#1a1408;border:none;border-radius:40px;padding:16px 46px;font-family:'Cinzel',serif;font-weight:600;font-size:13px;letter-spacing:.22em;box-shadow:0 12px 40px rgba(212,175,55,.3);">ENTER THE CLUB</button>
+
+        <div style="animation:zfFade 1.4s ease 1.2s both;position:absolute;bottom:34px;left:0;right:0;font-size:10.5px;letter-spacing:.28em;color:rgba(239,233,218,.4);">24/7 PRIVATE CONCIERGE</div>
+      </div>
+      </section>
+
+      <!-- ============ HOME ============ -->
+      <section class="zf-screen" id="screen-home">
+      <div style="padding:6px 22px 26px;animation:zfFade .5s ease both;">
+        <!-- header -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0 18px;">
+          <div style="display:flex;align-items:center;gap:11px;">
+            <div style="width:34px;height:34px;"><svg viewBox="0 0 100 100" style="width:100%;height:100%"><path d="M50 84 L12 22 L88 22 Z" fill="none" stroke="url(#zfGold)" stroke-width="3"/><path d="M50 60 L31 33 L69 33 Z" fill="url(#zfGold)"/></svg></div>
+            <div>
+              <div style="font-family:'Cinzel',serif;font-weight:600;font-size:14px;letter-spacing:.26em;color:#efe9da;">ZEROFLEX</div>
+              <div style="font-size:9px;letter-spacing:.4em;color:#a98f3f;margin-top:1px;">CLUB · BATUMI</div>
+            </div>
+          </div>
+          <div style="width:38px;height:38px;border-radius:50%;border:1px solid rgba(212,175,55,.3);display:flex;align-items:center;justify-content:center;color:#d4af37;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+          </div>
+        </div>
+
+        <!-- hero statement -->
+        <div style="margin:6px 0 26px;">
+          <div style="font-size:10px;letter-spacing:.36em;color:#a98f3f;margin-bottom:14px;">WELCOME · BATUMI</div>
+          <h1 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:38px;line-height:1.06;color:#f3eede;letter-spacing:.01em;">Extraordinary, <span style="font-style:italic;background:linear-gradient(100deg,#f8edc2,#d4af37,#b8860b);-webkit-background-clip:text;background-clip:text;color:transparent;">arranged quietly.</span></h1>
+          <p style="margin:14px 0 0;font-size:13.5px;line-height:1.6;color:rgba(239,233,218,.6);max-width:300px;">Supercars, private helicopters, yachts and chauffeured transfers across Batumi — booked through a single message. Open to everyone.</p>
+        </div>
+
+        <!-- services -->
+        <div style="display:flex;flex-direction:column;gap:14px;">
+
+          <div onclick="zf.go('fleet')" style="position:relative;overflow:hidden;cursor:pointer;border-radius:22px;border:1px solid rgba(212,175,55,.18);min-height:132px;display:flex;flex-direction:column;justify-content:space-between;padding:22px;">
+            <img class="zf-img" alt="Sport &amp; luxury cars" src="images/lambo.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1545553708-263d16d1064d?auto=format&fit=crop&w=800&q=80'" style="position:absolute;inset:0;z-index:0;">
+            <div style="position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(125deg, rgba(7,7,10,.86) 0%, rgba(7,7,10,.5) 48%, rgba(7,7,10,.8) 100%);"></div>
+            <div style="position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-start;">
+              <div style="width:44px;height:44px;border-radius:12px;border:1px solid rgba(212,175,55,.32);background:rgba(7,7,10,.35);display:flex;align-items:center;justify-content:center;color:#f0d480;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13M5 13h14v4H5zM5 13v4m14-4v4M7 17v1.5M17 17v1.5"/><circle cx="7.5" cy="15" r="1"/><circle cx="16.5" cy="15" r="1"/></svg></div>
+              <span style="font-size:9px;letter-spacing:.26em;color:rgba(239,233,218,.62);border:1px solid rgba(239,233,218,.22);background:rgba(7,7,10,.32);border-radius:20px;padding:5px 11px;">FLEET</span>
+            </div>
+            <div style="position:relative;z-index:2;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:500;color:#f7f2e4;line-height:1.05;">Sport &amp; Luxury Cars</div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px;">
+                <span style="font-size:11px;letter-spacing:.04em;color:rgba(239,233,218,.72);">Lamborghini · Ferrari · Rolls-Royce</span>
+                <span style="color:#f0d480;display:flex;align-items:center;gap:4px;font-size:11px;letter-spacing:.14em;">EXPLORE <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </div>
+            </div>
+          </div>
+
+          <div onclick="zf.go('heli')" style="position:relative;overflow:hidden;cursor:pointer;border-radius:22px;border:1px solid rgba(212,175,55,.18);min-height:132px;display:flex;flex-direction:column;justify-content:space-between;padding:22px;">
+            <img class="zf-img" alt="Private helicopter" src="images/heli.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1496306612363-6acd5fcf5bf3?auto=format&fit=crop&w=800&q=80'" style="position:absolute;inset:0;z-index:0;">
+            <div style="position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(125deg, rgba(7,7,10,.86) 0%, rgba(7,7,10,.5) 48%, rgba(7,7,10,.8) 100%);"></div>
+            <div style="position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-start;">
+              <div style="width:44px;height:44px;border-radius:12px;border:1px solid rgba(212,175,55,.32);background:rgba(7,7,10,.35);display:flex;align-items:center;justify-content:center;color:#f0d480;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h12M9 3v2M9 5v6m0 0H6m3 0h3m-3 0v3m0 0H7l-1 3m4-3h2.5a3.5 3.5 0 0 0 3.5-3.5V9l5 1"/></svg></div>
+              <span style="font-size:9px;letter-spacing:.26em;color:rgba(239,233,218,.62);border:1px solid rgba(239,233,218,.22);background:rgba(7,7,10,.32);border-radius:20px;padding:5px 11px;">AVIATION</span>
+            </div>
+            <div style="position:relative;z-index:2;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:500;color:#f7f2e4;line-height:1.05;">Private Helicopter</div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px;">
+                <span style="font-size:11px;letter-spacing:.04em;color:rgba(239,233,218,.72);">Coastal flights &amp; transfers</span>
+                <span style="color:#f0d480;display:flex;align-items:center;gap:4px;font-size:11px;letter-spacing:.14em;">EXPLORE <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </div>
+            </div>
+          </div>
+
+          <div onclick="zf.go('boat')" style="position:relative;overflow:hidden;cursor:pointer;border-radius:22px;border:1px solid rgba(212,175,55,.18);min-height:132px;display:flex;flex-direction:column;justify-content:space-between;padding:22px;">
+            <img class="zf-img" alt="Yacht &amp; boat" src="images/yacht.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1562281302-809108fd533c?auto=format&fit=crop&w=800&q=80'" style="position:absolute;inset:0;z-index:0;">
+            <div style="position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(125deg, rgba(7,7,10,.86) 0%, rgba(7,7,10,.5) 48%, rgba(7,7,10,.8) 100%);"></div>
+            <div style="position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-start;">
+              <div style="width:44px;height:44px;border-radius:12px;border:1px solid rgba(212,175,55,.32);background:rgba(7,7,10,.35);display:flex;align-items:center;justify-content:center;color:#f0d480;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18s1.5 1 3 1 3-1 3-1 1.5 1 3 1 3-1 3-1 1.5 1 3 1M5 16l-1-5h16l-2 5M12 11V4M7 7l5-3 5 3"/></svg></div>
+              <span style="font-size:9px;letter-spacing:.26em;color:rgba(239,233,218,.62);border:1px solid rgba(239,233,218,.22);background:rgba(7,7,10,.32);border-radius:20px;padding:5px 11px;">MARINE</span>
+            </div>
+            <div style="position:relative;z-index:2;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:500;color:#f7f2e4;line-height:1.05;">Yacht &amp; Boat</div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px;">
+                <span style="font-size:11px;letter-spacing:.04em;color:rgba(239,233,218,.72);">Charters on the Black Sea</span>
+                <span style="color:#f0d480;display:flex;align-items:center;gap:4px;font-size:11px;letter-spacing:.14em;">EXPLORE <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </div>
+            </div>
+          </div>
+
+          <div onclick="zf.go('transfer')" style="position:relative;overflow:hidden;cursor:pointer;border-radius:22px;border:1px solid rgba(212,175,55,.18);min-height:132px;display:flex;flex-direction:column;justify-content:space-between;padding:22px;">
+            <img class="zf-img" alt="Airport transfer" src="images/transfer.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1702543180823-9722d8f76cc3?auto=format&fit=crop&w=800&q=80'" style="position:absolute;inset:0;z-index:0;">
+            <div style="position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(125deg, rgba(7,7,10,.86) 0%, rgba(7,7,10,.5) 48%, rgba(7,7,10,.8) 100%);"></div>
+            <div style="position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-start;">
+              <div style="width:44px;height:44px;border-radius:12px;border:1px solid rgba(212,175,55,.32);background:rgba(7,7,10,.35);display:flex;align-items:center;justify-content:center;color:#f0d480;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16.5l1.4-4.2A2 2 0 0 1 6.3 11h7.4a2 2 0 0 1 1.9 1.3l1.4 4.2M3 16.5h14M3 16.5v2m14-2v2M6 14.5h.01M14 14.5h.01"/><path d="M16.5 4.5l5 1.8a1 1 0 0 1 .1 1.8L20 9.2 18 12l-1.6-.4.6-2.4-2.2.7-1 .9-1.3-.4 2-3.6a1.4 1.4 0 0 1 1.5-.7z"/></svg></div>
+              <span style="font-size:9px;letter-spacing:.26em;color:rgba(239,233,218,.62);border:1px solid rgba(239,233,218,.22);background:rgba(7,7,10,.32);border-radius:20px;padding:5px 11px;">TRANSFER</span>
+            </div>
+            <div style="position:relative;z-index:2;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:500;color:#f7f2e4;line-height:1.05;">Airport Transfer</div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px;">
+                <span style="font-size:11px;letter-spacing:.04em;color:rgba(239,233,218,.72);">Lux-class autos · chauffeured</span>
+                <span style="color:#f0d480;display:flex;align-items:center;gap:4px;font-size:11px;letter-spacing:.14em;">EXPLORE <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- concierge callout -->
+        <div onclick="zf.goConcierge()" style="cursor:pointer;margin-top:18px;border-radius:20px;border:1px solid rgba(212,175,55,.2);background:linear-gradient(120deg, rgba(212,175,55,.1), rgba(212,175,55,.02));padding:18px 20px;display:flex;align-items:center;gap:15px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#f3d98b,#b8860b);display:flex;align-items:center;justify-content:center;color:#1a1408;flex:0 0 auto;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div style="flex:1;">
+            <div style="font-family:'Cinzel',serif;font-size:12px;letter-spacing:.14em;color:#f3eede;">PERSONAL CONCIERGE</div>
+            <div style="font-size:11.5px;color:rgba(239,233,218,.55);margin-top:3px;">Available 24/7 · Reply within minutes</div>
+          </div>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.6" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
+        </div>
+      </div>
+      </section>
+
+      <!-- ============ FLEET ============ -->
+      <section class="zf-screen" id="screen-fleet">
+      <div style="padding:6px 22px 26px;animation:zfFade .45s ease both;">
+        <div style="display:flex;align-items:center;gap:14px;padding:8px 0 16px;">
+          <button onclick="zf.go('home')" style="width:38px;height:38px;border-radius:50%;border:1px solid rgba(212,175,55,.28);background:transparent;color:#d4af37;cursor:pointer;display:flex;align-items:center;justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <div>
+            <div style="font-family:'Cinzel',serif;font-size:13px;letter-spacing:.2em;color:#efe9da;">THE FLEET</div>
+            <div style="font-size:10px;letter-spacing:.16em;color:#a98f3f;margin-top:2px;">SPORT &amp; LUXURY · BATUMI</div>
+          </div>
+        </div>
+
+        <p style="margin:2px 0 20px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:19px;color:rgba(239,233,218,.7);line-height:1.4;">A curated stable. Each car delivered, detailed and fully fuelled to you.</p>
+
+        <div id="zf-fleet-list" style="display:flex;flex-direction:column;gap:18px;"></div>
+      </div>
+      </section>
+
+      <!-- ============ CAR DETAIL ============ -->
+      <section class="zf-screen" id="screen-carDetail">
+      <div id="zf-car-detail" style="animation:zfFade .45s ease both;"></div>
+      </section>
+
+      <!-- ============ HELICOPTER ============ -->
+      <section class="zf-screen" id="screen-heli">
+      <div style="animation:zfFade .45s ease both;">
+        <div style="position:relative;height:300px;">
+          <img class="zf-img" alt="Private helicopter over the sea at sunset" src="images/heli.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1496306612363-6acd5fcf5bf3?auto=format&fit=crop&w=1000&q=80'" style="position:absolute;inset:0;">
+          <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg, rgba(7,7,10,.5) 0%, rgba(7,7,10,.05) 32%, rgba(7,7,10,.4) 62%, #07070a 100%);"></div>
+          <button onclick="zf.go('home')" style="position:absolute;top:14px;left:18px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(212,175,55,.35);background:rgba(7,7,10,.5);backdrop-filter:blur(6px);color:#f3d98b;cursor:pointer;display:flex;align-items:center;justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <div style="position:absolute;bottom:14px;left:24px;right:24px;pointer-events:none;">
+            <div style="font-size:11px;letter-spacing:.24em;color:#cdb96a;">PRIVATE AVIATION</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:500;color:#f7f2e4;line-height:1;">Helicopter Charter</div>
+          </div>
+        </div>
+
+        <div style="padding:6px 24px 30px;">
+          <p style="margin:6px 0 24px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:19px;line-height:1.5;color:rgba(239,233,218,.78);">Lift above the Black Sea coastline. Champagne aboard, pilot briefed, departing on your schedule.</p>
+
+          <div style="font-size:10px;letter-spacing:.28em;color:#a98f3f;margin-bottom:14px;">FLIGHTS</div>
+          <div style="display:flex;flex-direction:column;gap:13px;margin-bottom:26px;">
+            <div style="display:flex;align-items:center;gap:15px;border:1px solid rgba(212,175,55,.16);border-radius:16px;padding:16px;background:linear-gradient(155deg,#141319,#0b0b0f);">
+              <div style="width:46px;height:46px;flex:0 0 auto;border-radius:13px;border:1px solid rgba(212,175,55,.28);display:flex;align-items:center;justify-content:center;color:#e6c869;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h12M9 3v2M9 5v6m0 0H6m3 0h3m-3 0v3m0 0H7l-1 3m4-3h2.5a3.5 3.5 0 0 0 3.5-3.5V9l5 1"/></svg></div>
+              <div style="flex:1;"><div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:#f3eede;line-height:1.1;">Batumi Panoramic</div><div style="font-size:11.5px;color:rgba(239,233,218,.55);margin-top:3px;">City skyline &amp; coastline loop</div></div>
+              <div style="text-align:right;font-size:11px;color:#cdb96a;letter-spacing:.05em;">20 min</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:15px;border:1px solid rgba(212,175,55,.16);border-radius:16px;padding:16px;background:linear-gradient(155deg,#141319,#0b0b0f);">
+              <div style="width:46px;height:46px;flex:0 0 auto;border-radius:13px;border:1px solid rgba(212,175,55,.28);display:flex;align-items:center;justify-content:center;color:#e6c869;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h12M9 3v2M9 5v6m0 0H6m3 0h3m-3 0v3m0 0H7l-1 3m4-3h2.5a3.5 3.5 0 0 0 3.5-3.5V9l5 1"/></svg></div>
+              <div style="flex:1;"><div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:#f3eede;line-height:1.1;">Black Sea Coast</div><div style="font-size:11.5px;color:rgba(239,233,218,.55);margin-top:3px;">Scenic shoreline &amp; mountains</div></div>
+              <div style="text-align:right;font-size:11px;color:#cdb96a;letter-spacing:.05em;">45 min</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:15px;border:1px solid rgba(212,175,55,.16);border-radius:16px;padding:16px;background:linear-gradient(155deg,#141319,#0b0b0f);">
+              <div style="width:46px;height:46px;flex:0 0 auto;border-radius:13px;border:1px solid rgba(212,175,55,.28);display:flex;align-items:center;justify-content:center;color:#e6c869;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h12M9 3v2M9 5v6m0 0H6m3 0h3m-3 0v3m0 0H7l-1 3m4-3h2.5a3.5 3.5 0 0 0 3.5-3.5V9l5 1"/></svg></div>
+              <div style="flex:1;"><div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:#f3eede;line-height:1.1;">Private Transfer</div><div style="font-size:11.5px;color:rgba(239,233,218,.55);margin-top:3px;">Door-to-door, anywhere in Adjara</div></div>
+              <div style="text-align:right;font-size:11px;color:#cdb96a;letter-spacing:.05em;">On request</div>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:12px;margin-bottom:24px;">
+            <div style="flex:1;text-align:center;border:1px solid rgba(212,175,55,.16);border-radius:16px;padding:15px 8px;background:linear-gradient(155deg,#141319,#0b0b0f);"><div style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;color:#f3eede;">4</div><div style="font-size:9px;letter-spacing:.16em;color:rgba(239,233,218,.5);margin-top:5px;">GUESTS</div></div>
+            <div style="flex:1;text-align:center;border:1px solid rgba(212,175,55,.16);border-radius:16px;padding:15px 8px;background:linear-gradient(155deg,#141319,#0b0b0f);"><div style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;color:#f3eede;">Yes</div><div style="font-size:9px;letter-spacing:.16em;color:rgba(239,233,218,.5);margin-top:5px;">CHAMPAGNE</div></div>
+            <div style="flex:1;text-align:center;border:1px solid rgba(212,175,55,.16);border-radius:16px;padding:15px 8px;background:linear-gradient(155deg,#141319,#0b0b0f);"><div style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;color:#f3eede;">2h</div><div style="font-size:9px;letter-spacing:.16em;color:rgba(239,233,218,.5);margin-top:5px;">NOTICE</div></div>
+          </div>
+
+          <button onclick="zf.inquire('a private helicopter flight','heli')" style="width:100%;cursor:pointer;background:linear-gradient(100deg,#f3d98b,#d4af37,#aa811f);color:#1a1408;border:none;border-radius:16px;padding:18px;font-family:'Cinzel',serif;font-weight:600;font-size:13px;letter-spacing:.14em;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 14px 38px rgba(212,175,55,.26);">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.4 1.3-1.94 1.38-.5.07-1.12.1-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.14-4.9-4.33-.14-.19-1.17-1.56-1.17-2.97 0-1.42.74-2.11 1-2.4.26-.29.57-.36.76-.36l.55.01c.18.01.41-.07.64.49.24.57.82 2 .89 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.17.29.74 1.22 1.59 1.98 1.1.98 2.02 1.29 2.31 1.43.29.14.46.12.63-.07.17-.19.73-.85.92-1.14.19-.29.39-.24.64-.14.26.09 1.66.78 1.95.92.29.14.48.21.55.33.07.12.07.68-.17 1.36z"/></svg>
+            REQUEST THIS FLIGHT
+          </button>
+        </div>
+      </div>
+      </section>
+
+      <!-- ============ BOAT ============ -->
+      <section class="zf-screen" id="screen-boat">
+      <div style="animation:zfFade .45s ease both;">
+        <div style="position:relative;height:300px;">
+          <img class="zf-img" alt="Luxury yacht on the sea" src="images/yacht.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1562281302-809108fd533c?auto=format&fit=crop&w=1000&q=80'" style="position:absolute;inset:0;">
+          <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg, rgba(7,7,10,.5) 0%, rgba(7,7,10,.05) 32%, rgba(7,7,10,.4) 62%, #07070a 100%);"></div>
+          <button onclick="zf.go('home')" style="position:absolute;top:14px;left:18px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(212,175,55,.35);background:rgba(7,7,10,.5);backdrop-filter:blur(6px);color:#f3d98b;cursor:pointer;display:flex;align-items:center;justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <div style="position:absolute;bottom:14px;left:24px;right:24px;pointer-events:none;">
+            <div style="font-size:11px;letter-spacing:.24em;color:#cdb96a;">ON THE BLACK SEA</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:500;color:#f7f2e4;line-height:1;">Yacht &amp; Boat</div>
+          </div>
+        </div>
+
+        <div style="padding:6px 24px 30px;">
+          <p style="margin:6px 0 24px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:19px;line-height:1.5;color:rgba(239,233,218,.78);">Private charters from Batumi marina — captain, crew and onboard concierge, sunset to starlight.</p>
+
+          <div style="font-size:10px;letter-spacing:.28em;color:#a98f3f;margin-bottom:14px;">EXPERIENCES</div>
+          <div style="display:flex;flex-direction:column;gap:13px;margin-bottom:26px;">
+            <div style="display:flex;align-items:center;gap:15px;border:1px solid rgba(212,175,55,.16);border-radius:16px;padding:16px;background:linear-gradient(155deg,#141319,#0b0b0f);">
+              <div style="width:46px;height:46px;flex:0 0 auto;border-radius:13px;border:1px solid rgba(212,175,55,.28);display:flex;align-items:center;justify-content:center;color:#e6c869;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18s1.5 1 3 1 3-1 3-1 1.5 1 3 1 3-1 3-1 1.5 1 3 1M5 16l-1-5h16l-2 5M12 11V4M7 7l5-3 5 3"/></svg></div>
+              <div style="flex:1;"><div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:#f3eede;line-height:1.1;">Sunset Cruise</div><div style="font-size:11.5px;color:rgba(239,233,218,.55);margin-top:3px;">Golden hour with canapés &amp; wine</div></div>
+              <div style="text-align:right;font-size:11px;color:#cdb96a;letter-spacing:.05em;">2 hrs</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:15px;border:1px solid rgba(212,175,55,.16);border-radius:16px;padding:16px;background:linear-gradient(155deg,#141319,#0b0b0f);">
+              <div style="width:46px;height:46px;flex:0 0 auto;border-radius:13px;border:1px solid rgba(212,175,55,.28);display:flex;align-items:center;justify-content:center;color:#e6c869;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18s1.5 1 3 1 3-1 3-1 1.5 1 3 1 3-1 3-1 1.5 1 3 1M5 16l-1-5h16l-2 5M12 11V4M7 7l5-3 5 3"/></svg></div>
+              <div style="flex:1;"><div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:#f3eede;line-height:1.1;">Full-Day Charter</div><div style="font-size:11.5px;color:rgba(239,233,218,.55);margin-top:3px;">Swim stops, lunch, full crew</div></div>
+              <div style="text-align:right;font-size:11px;color:#cdb96a;letter-spacing:.05em;">8 hrs</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:15px;border:1px solid rgba(212,175,55,.16);border-radius:16px;padding:16px;background:linear-gradient(155deg,#141319,#0b0b0f);">
+              <div style="width:46px;height:46px;flex:0 0 auto;border-radius:13px;border:1px solid rgba(212,175,55,.28);display:flex;align-items:center;justify-content:center;color:#e6c869;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18s1.5 1 3 1 3-1 3-1 1.5 1 3 1 3-1 3-1 1.5 1 3 1M5 16l-1-5h16l-2 5M12 11V4M7 7l5-3 5 3"/></svg></div>
+              <div style="flex:1;"><div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:#f3eede;line-height:1.1;">Black Sea Expedition</div><div style="font-size:11.5px;color:rgba(239,233,218,.55);margin-top:3px;">Bespoke multi-day voyage</div></div>
+              <div style="text-align:right;font-size:11px;color:#cdb96a;letter-spacing:.05em;">Custom</div>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:12px;margin-bottom:24px;">
+            <div style="flex:1;text-align:center;border:1px solid rgba(212,175,55,.16);border-radius:16px;padding:15px 8px;background:linear-gradient(155deg,#141319,#0b0b0f);"><div style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;color:#f3eede;">10</div><div style="font-size:9px;letter-spacing:.16em;color:rgba(239,233,218,.5);margin-top:5px;">GUESTS</div></div>
+            <div style="flex:1;text-align:center;border:1px solid rgba(212,175,55,.16);border-radius:16px;padding:15px 8px;background:linear-gradient(155deg,#141319,#0b0b0f);"><div style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;color:#f3eede;">Full</div><div style="font-size:9px;letter-spacing:.16em;color:rgba(239,233,218,.5);margin-top:5px;">CREW</div></div>
+            <div style="flex:1;text-align:center;border:1px solid rgba(212,175,55,.16);border-radius:16px;padding:15px 8px;background:linear-gradient(155deg,#141319,#0b0b0f);"><div style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;color:#f3eede;">Onboard</div><div style="font-size:9px;letter-spacing:.16em;color:rgba(239,233,218,.5);margin-top:5px;">CONCIERGE</div></div>
+          </div>
+
+          <button onclick="zf.inquire('a private yacht charter','boat')" style="width:100%;cursor:pointer;background:linear-gradient(100deg,#f3d98b,#d4af37,#aa811f);color:#1a1408;border:none;border-radius:16px;padding:18px;font-family:'Cinzel',serif;font-weight:600;font-size:13px;letter-spacing:.14em;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 14px 38px rgba(212,175,55,.26);">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.4 1.3-1.94 1.38-.5.07-1.12.1-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.14-4.9-4.33-.14-.19-1.17-1.56-1.17-2.97 0-1.42.74-2.11 1-2.4.26-.29.57-.36.76-.36l.55.01c.18.01.41-.07.64.49.24.57.82 2 .89 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.17.29.74 1.22 1.59 1.98 1.1.98 2.02 1.29 2.31 1.43.29.14.46.12.63-.07.17-.19.73-.85.92-1.14.19-.29.39-.24.64-.14.26.09 1.66.78 1.95.92.29.14.48.21.55.33.07.12.07.68-.17 1.36z"/></svg>
+            CHARTER NOW
+          </button>
+        </div>
+      </div>
+      </section>
+
+      <!-- ============ AIRPORT TRANSFER ============ -->
+      <section class="zf-screen" id="screen-transfer">
+      <div style="animation:zfFade .45s ease both;">
+        <div style="position:relative;height:300px;">
+          <img class="zf-img" alt="Chauffeured black Mercedes airport transfer" src="images/transfer.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1702543180823-9722d8f76cc3?auto=format&fit=crop&w=1000&q=80'" style="position:absolute;inset:0;">
+          <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg, rgba(7,7,10,.5) 0%, rgba(7,7,10,.05) 32%, rgba(7,7,10,.4) 62%, #07070a 100%);"></div>
+          <button onclick="zf.go('home')" style="position:absolute;top:14px;left:18px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(212,175,55,.35);background:rgba(7,7,10,.5);backdrop-filter:blur(6px);color:#f3d98b;cursor:pointer;display:flex;align-items:center;justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <div style="position:absolute;bottom:14px;left:24px;right:24px;pointer-events:none;">
+            <div style="font-size:11px;letter-spacing:.24em;color:#cdb96a;">AIRPORT → CITY · CHAUFFEURED</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:500;color:#f7f2e4;line-height:1;">Airport Transfer</div>
+          </div>
+        </div>
+
+        <div style="padding:6px 24px 30px;">
+          <p style="margin:6px 0 24px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:19px;line-height:1.5;color:rgba(239,233,218,.78);">Met at the gate, name on the board. A lux-class auto and English-speaking chauffeur waiting — flight tracked, no waiting, ever.</p>
+
+          <div style="font-size:10px;letter-spacing:.28em;color:#a98f3f;margin-bottom:14px;">CHOOSE YOUR CLASS</div>
+          <div style="display:flex;flex-direction:column;gap:13px;margin-bottom:26px;">
+            <div style="display:flex;align-items:center;gap:15px;border:1px solid rgba(212,175,55,.16);border-radius:16px;padding:16px;background:linear-gradient(155deg,#141319,#0b0b0f);">
+              <div style="width:46px;height:46px;flex:0 0 auto;border-radius:13px;border:1px solid rgba(212,175,55,.28);display:flex;align-items:center;justify-content:center;color:#e6c869;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13M5 13h14v4H5zM5 13v4m14-4v4M7 17v1.5M17 17v1.5"/><circle cx="7.5" cy="15" r="1"/><circle cx="16.5" cy="15" r="1"/></svg></div>
+              <div style="flex:1;"><div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:#f3eede;line-height:1.1;">Mercedes S-Class</div><div style="font-size:11.5px;color:rgba(239,233,218,.55);margin-top:3px;">Executive sedan · leather &amp; climate</div></div>
+              <div style="text-align:right;font-size:11px;color:#cdb96a;letter-spacing:.05em;">3 pax</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:15px;border:1px solid rgba(212,175,55,.16);border-radius:16px;padding:16px;background:linear-gradient(155deg,#141319,#0b0b0f);">
+              <div style="width:46px;height:46px;flex:0 0 auto;border-radius:13px;border:1px solid rgba(212,175,55,.28);display:flex;align-items:center;justify-content:center;color:#e6c869;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13M5 13h14v4H5zM5 13v4m14-4v4M7 17v1.5M17 17v1.5"/><circle cx="7.5" cy="15" r="1"/><circle cx="16.5" cy="15" r="1"/></svg></div>
+              <div style="flex:1;"><div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:#f3eede;line-height:1.1;">Mercedes-Maybach</div><div style="font-size:11.5px;color:rgba(239,233,218,.55);margin-top:3px;">First-class rear cabin &amp; footrests</div></div>
+              <div style="text-align:right;font-size:11px;color:#cdb96a;letter-spacing:.05em;">2 pax</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:15px;border:1px solid rgba(212,175,55,.16);border-radius:16px;padding:16px;background:linear-gradient(155deg,#141319,#0b0b0f);">
+              <div style="width:46px;height:46px;flex:0 0 auto;border-radius:13px;border:1px solid rgba(212,175,55,.28);display:flex;align-items:center;justify-content:center;color:#e6c869;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13M5 13h14v4H5zM5 13v4m14-4v4M7 17v1.5M17 17v1.5"/><circle cx="7.5" cy="15" r="1"/><circle cx="16.5" cy="15" r="1"/></svg></div>
+              <div style="flex:1;"><div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:#f3eede;line-height:1.1;">Mercedes V-Class</div><div style="font-size:11.5px;color:rgba(239,233,218,.55);margin-top:3px;">Premium van · family &amp; luggage</div></div>
+              <div style="text-align:right;font-size:11px;color:#cdb96a;letter-spacing:.05em;">6 pax</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:15px;border:1px solid rgba(212,175,55,.16);border-radius:16px;padding:16px;background:linear-gradient(155deg,#141319,#0b0b0f);">
+              <div style="width:46px;height:46px;flex:0 0 auto;border-radius:13px;border:1px solid rgba(212,175,55,.28);display:flex;align-items:center;justify-content:center;color:#e6c869;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13M5 13h14v4H5zM5 13v4m14-4v4M7 17v1.5M17 17v1.5"/><circle cx="7.5" cy="15" r="1"/><circle cx="16.5" cy="15" r="1"/></svg></div>
+              <div style="flex:1;"><div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:#f3eede;line-height:1.1;">Range Rover Autobiography</div><div style="font-size:11.5px;color:rgba(239,233,218,.55);margin-top:3px;">Luxury SUV · all-terrain comfort</div></div>
+              <div style="text-align:right;font-size:11px;color:#cdb96a;letter-spacing:.05em;">4 pax</div>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:12px;margin-bottom:24px;">
+            <div style="flex:1;text-align:center;border:1px solid rgba(212,175,55,.16);border-radius:16px;padding:15px 8px;background:linear-gradient(155deg,#141319,#0b0b0f);"><div style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;color:#f3eede;">Yes</div><div style="font-size:9px;letter-spacing:.16em;color:rgba(239,233,218,.5);margin-top:5px;">FLIGHT TRACKED</div></div>
+            <div style="flex:1;text-align:center;border:1px solid rgba(212,175,55,.16);border-radius:16px;padding:15px 8px;background:linear-gradient(155deg,#141319,#0b0b0f);"><div style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;color:#f3eede;">Free</div><div style="font-size:9px;letter-spacing:.16em;color:rgba(239,233,218,.5);margin-top:5px;">WAIT TIME</div></div>
+            <div style="flex:1;text-align:center;border:1px solid rgba(212,175,55,.16);border-radius:16px;padding:15px 8px;background:linear-gradient(155deg,#141319,#0b0b0f);"><div style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;color:#f3eede;">Incl.</div><div style="font-size:9px;letter-spacing:.16em;color:rgba(239,233,218,.5);margin-top:5px;">MEET &amp; GREET</div></div>
+          </div>
+
+          <div style="font-size:10px;letter-spacing:.28em;color:#a98f3f;margin-bottom:12px;">INCLUDED</div>
+          <div style="display:flex;flex-direction:column;gap:11px;margin-bottom:26px;">
+            <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:rgba(239,233,218,.78);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Name-board greeting at arrivals</div>
+            <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:rgba(239,233,218,.78);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Flight tracking — we adjust to delays</div>
+            <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:rgba(239,233,218,.78);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Bottled water &amp; onboard Wi-Fi</div>
+            <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:rgba(239,233,218,.78);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Door-to-door, anywhere in Adjara</div>
+          </div>
+
+          <button onclick="zf.inquire('a lux-class airport transfer','transfer')" style="width:100%;cursor:pointer;background:linear-gradient(100deg,#f3d98b,#d4af37,#aa811f);color:#1a1408;border:none;border-radius:16px;padding:18px;font-family:'Cinzel',serif;font-weight:600;font-size:13px;letter-spacing:.14em;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 14px 38px rgba(212,175,55,.26);">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.4 1.3-1.94 1.38-.5.07-1.12.1-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.14-4.9-4.33-.14-.19-1.17-1.56-1.17-2.97 0-1.42.74-2.11 1-2.4.26-.29.57-.36.76-.36l.55.01c.18.01.41-.07.64.49.24.57.82 2 .89 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.17.29.74 1.22 1.59 1.98 1.1.98 2.02 1.29 2.31 1.43.29.14.46.12.63-.07.17-.19.73-.85.92-1.14.19-.29.39-.24.64-.14.26.09 1.66.78 1.95.92.29.14.48.21.55.33.07.12.07.68-.17 1.36z"/></svg>
+            BOOK MY TRANSFER
+          </button>
+          <div style="text-align:center;margin-top:12px;font-size:10.5px;letter-spacing:.18em;color:rgba(239,233,218,.4);">BATUMI · KUTAISI · TBILISI</div>
+        </div>
+      </div>
+      </section>
+
+      <!-- ============ NEWS FEED ============ -->
+      <section class="zf-screen" id="screen-news">
+      <div style="padding:6px 22px 26px;animation:zfFade .45s ease both;">
+        <div style="display:flex;align-items:center;gap:14px;padding:8px 0 16px;">
+          <button onclick="zf.go('home')" style="width:38px;height:38px;border-radius:50%;border:1px solid rgba(212,175,55,.28);background:transparent;color:#d4af37;cursor:pointer;display:flex;align-items:center;justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <div>
+            <div style="font-family:'Cinzel',serif;font-size:13px;letter-spacing:.2em;color:#efe9da;">NEWS FEED</div>
+            <div style="font-size:10px;letter-spacing:.16em;color:#a98f3f;margin-top:2px;">FROM THE CLUB · BATUMI</div>
+          </div>
+        </div>
+
+        <p style="margin:2px 0 20px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:19px;color:rgba(239,233,218,.7);line-height:1.4;">New arrivals, events and the latest from the Zeroflex stable.</p>
+
+        <div style="display:flex;flex-direction:column;gap:18px;">
+
+          <div onclick="zf.goConcierge()" style="position:relative;cursor:pointer;border-radius:22px;overflow:hidden;border:1px solid rgba(212,175,55,.16);background:#0c0c10;">
+            <div style="position:relative;height:172px;">
+              <img class="zf-img" alt="Mercedes-Maybach S680" src="images/maybach.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1739545884485-6f5445dad461?auto=format&fit=crop&w=800&q=80'" style="position:absolute;inset:0;">
+              <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg, rgba(7,7,10,.1) 0%, rgba(7,7,10,.2) 45%, rgba(7,7,10,.92) 100%);"></div>
+              <div style="position:absolute;top:14px;left:16px;pointer-events:none;font-size:9px;letter-spacing:.24em;color:#1a1408;background:linear-gradient(100deg,#f3d98b,#d4af37);padding:5px 10px;border-radius:20px;font-weight:500;">NEW ARRIVAL</div>
+            </div>
+            <div style="padding:16px 18px 18px;">
+              <div style="font-size:9.5px;letter-spacing:.2em;color:#a98f3f;margin-bottom:7px;">JUNE 2026</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:500;color:#f3eede;line-height:1.1;">Maybach S680 joins the fleet</div>
+              <div style="font-size:12px;color:rgba(239,233,218,.55);margin-top:7px;line-height:1.5;">Our most refined airport transfer yet — first-class rear cabin, now bookable.</div>
+              <div style="display:flex;align-items:center;gap:5px;margin-top:12px;color:#d4af37;font-size:11px;letter-spacing:.14em;">ENQUIRE <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+            </div>
+          </div>
+
+          <div onclick="zf.goConcierge()" style="position:relative;cursor:pointer;border-radius:22px;overflow:hidden;border:1px solid rgba(212,175,55,.16);background:#0c0c10;">
+            <div style="position:relative;height:172px;">
+              <img class="zf-img" alt="Sunset yacht social on the Black Sea" src="images/yacht.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1562281302-809108fd533c?auto=format&fit=crop&w=800&q=80'" style="position:absolute;inset:0;">
+              <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg, rgba(7,7,10,.1) 0%, rgba(7,7,10,.2) 45%, rgba(7,7,10,.92) 100%);"></div>
+              <div style="position:absolute;top:14px;left:16px;pointer-events:none;font-size:9px;letter-spacing:.24em;color:#1a1408;background:linear-gradient(100deg,#f3d98b,#d4af37);padding:5px 10px;border-radius:20px;font-weight:500;">EVENT</div>
+            </div>
+            <div style="padding:16px 18px 18px;">
+              <div style="font-size:9.5px;letter-spacing:.2em;color:#a98f3f;margin-bottom:7px;">JUNE 2026</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:500;color:#f3eede;line-height:1.1;">Sunset yacht social on the Black Sea</div>
+              <div style="font-size:12px;color:rgba(239,233,218,.55);margin-top:7px;line-height:1.5;">A members’ evening at the marina — champagne, canapés and a coastal cruise.</div>
+              <div style="display:flex;align-items:center;gap:5px;margin-top:12px;color:#d4af37;font-size:11px;letter-spacing:.14em;">ENQUIRE <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+            </div>
+          </div>
+
+          <div onclick="zf.goConcierge()" style="position:relative;cursor:pointer;border-radius:22px;overflow:hidden;border:1px solid rgba(212,175,55,.16);background:#0c0c10;">
+            <div style="position:relative;height:172px;">
+              <img class="zf-img" alt="Helicopter and supercar weekend" src="images/heli.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1496306612363-6acd5fcf5bf3?auto=format&fit=crop&w=800&q=80'" style="position:absolute;inset:0;">
+              <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg, rgba(7,7,10,.1) 0%, rgba(7,7,10,.2) 45%, rgba(7,7,10,.92) 100%);"></div>
+              <div style="position:absolute;top:14px;left:16px;pointer-events:none;font-size:9px;letter-spacing:.24em;color:#1a1408;background:linear-gradient(100deg,#f3d98b,#d4af37);padding:5px 10px;border-radius:20px;font-weight:500;">EXPERIENCE</div>
+            </div>
+            <div style="padding:16px 18px 18px;">
+              <div style="font-size:9.5px;letter-spacing:.2em;color:#a98f3f;margin-bottom:7px;">MAY 2026</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:500;color:#f3eede;line-height:1.1;">Helicopter &amp; supercar weekend</div>
+              <div style="font-size:12px;color:rgba(239,233,218,.55);margin-top:7px;line-height:1.5;">Coastal flight by day, Huracán along the boulevard by night. Limited dates.</div>
+              <div style="display:flex;align-items:center;gap:5px;margin-top:12px;color:#d4af37;font-size:11px;letter-spacing:.14em;">ENQUIRE <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      </section>
+
+      <!-- ============ MEMBERSHIP ============ -->
+      <section class="zf-screen" id="screen-membership">
+      <div style="padding:6px 24px 30px;animation:zfFade .45s ease both;">
+        <div style="display:flex;align-items:center;gap:14px;padding:8px 0 22px;">
+          <button onclick="zf.go('home')" style="width:38px;height:38px;border-radius:50%;border:1px solid rgba(212,175,55,.28);background:transparent;color:#d4af37;cursor:pointer;display:flex;align-items:center;justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <div style="font-family:'Cinzel',serif;font-size:13px;letter-spacing:.2em;color:#efe9da;">MEMBERSHIP</div>
+        </div>
+
+        <div style="text-align:center;margin-bottom:26px;">
+          <div style="width:78px;height:78px;margin:0 auto 18px;position:relative;display:flex;align-items:center;justify-content:center;">
+            <div style="position:absolute;inset:0;border-radius:50%;border:1px solid rgba(212,175,55,.2);animation:zfGlow 5s ease-in-out infinite;"></div>
+            <div style="width:42px;height:42px;animation:zfPulse 4s ease-in-out infinite;"><svg viewBox="0 0 100 100" style="width:100%;height:100%"><path d="M50 84 L12 22 L88 22 Z" fill="none" stroke="url(#zfGold)" stroke-width="3"/><path d="M50 60 L31 33 L69 33 Z" fill="url(#zfGold)"/></svg></div>
+          </div>
+          <div style="font-size:10px;letter-spacing:.34em;color:#a98f3f;margin-bottom:10px;">JOIN THE CLUB</div>
+          <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:33px;line-height:1.1;color:#f3eede;">The doors are <span style="font-style:italic;background:linear-gradient(100deg,#f8edc2,#d4af37,#b8860b);-webkit-background-clip:text;background-clip:text;color:transparent;">open to all.</span></h2>
+          <p style="margin:14px auto 0;max-width:280px;font-size:13px;line-height:1.6;color:rgba(239,233,218,.6);">Everyone is welcome at Zeroflex. Say hello on WhatsApp and your concierge takes care of the rest.</p>
+        </div>
+
+        <div style="border:1px solid rgba(212,175,55,.16);border-radius:20px;background:linear-gradient(155deg,#141319,#0b0b0f);padding:20px 22px;margin-bottom:24px;">
+          <div style="font-size:10px;letter-spacing:.28em;color:#a98f3f;margin-bottom:16px;">WHAT YOU GET</div>
+          <div style="display:flex;flex-direction:column;gap:15px;">
+            <div style="display:flex;align-items:flex-start;gap:13px;"><div style="width:26px;height:26px;flex:0 0 auto;border-radius:50%;border:1px solid rgba(212,175,55,.3);display:flex;align-items:center;justify-content:center;color:#d4af37;margin-top:1px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div><div><div style="font-size:13.5px;color:#f0ead8;font-weight:500;">Priority fleet access</div><div style="font-size:11.5px;color:rgba(239,233,218,.52);margin-top:2px;line-height:1.4;">First call on every car, flight and yacht.</div></div></div>
+            <div style="display:flex;align-items:flex-start;gap:13px;"><div style="width:26px;height:26px;flex:0 0 auto;border-radius:50%;border:1px solid rgba(212,175,55,.3);display:flex;align-items:center;justify-content:center;color:#d4af37;margin-top:1px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div><div><div style="font-size:13.5px;color:#f0ead8;font-weight:500;">24/7 personal concierge</div><div style="font-size:11.5px;color:rgba(239,233,218,.52);margin-top:2px;line-height:1.4;">One contact for every arrangement, day or night.</div></div></div>
+            <div style="display:flex;align-items:flex-start;gap:13px;"><div style="width:26px;height:26px;flex:0 0 auto;border-radius:50%;border:1px solid rgba(212,175,55,.3);display:flex;align-items:center;justify-content:center;color:#d4af37;margin-top:1px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div><div><div style="font-size:13.5px;color:#f0ead8;font-weight:500;">Discreet, confidential service</div><div style="font-size:11.5px;color:rgba(239,233,218,.52);margin-top:2px;line-height:1.4;">Private handovers, no public pricing, total privacy.</div></div></div>
+            <div style="display:flex;align-items:flex-start;gap:13px;"><div style="width:26px;height:26px;flex:0 0 auto;border-radius:50%;border:1px solid rgba(212,175,55,.3);display:flex;align-items:center;justify-content:center;color:#d4af37;margin-top:1px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div><div><div style="font-size:13.5px;color:#f0ead8;font-weight:500;">Curated experiences</div><div style="font-size:11.5px;color:rgba(239,233,218,.52);margin-top:2px;line-height:1.4;">Hand-picked events and trips across Batumi.</div></div></div>
+          </div>
+        </div>
+
+        <button onclick="zf.inquire('joining Zeroflex Club','membership')" style="width:100%;cursor:pointer;background:linear-gradient(100deg,#f3d98b,#d4af37,#aa811f);color:#1a1408;border:none;border-radius:16px;padding:18px;font-family:'Cinzel',serif;font-weight:600;font-size:13px;letter-spacing:.14em;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 14px 38px rgba(212,175,55,.26);">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.4 1.3-1.94 1.38-.5.07-1.12.1-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.14-4.9-4.33-.14-.19-1.17-1.56-1.17-2.97 0-1.42.74-2.11 1-2.4.26-.29.57-.36.76-.36l.55.01c.18.01.41-.07.64.49.24.57.82 2 .89 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.17.29.74 1.22 1.59 1.98 1.1.98 2.02 1.29 2.31 1.43.29.14.46.12.63-.07.17-.19.73-.85.92-1.14.19-.29.39-.24.64-.14.26.09 1.66.78 1.95.92.29.14.48.21.55.33.07.12.07.68-.17 1.36z"/></svg>
+          APPLY VIA WHATSAPP
+        </button>
+        <div style="text-align:center;margin-top:12px;font-size:10.5px;letter-spacing:.18em;color:rgba(239,233,218,.4);">FRIENDLY · FAST · BATUMI</div>
+      </div>
+      </section>
+
+      <!-- ============ WHATSAPP CONFIRM ============ -->
+      <section class="zf-screen" id="screen-confirm">
+      <div style="min-height:100%;display:flex;flex-direction:column;padding:6px 26px 30px;animation:zfFade .45s ease both;background:radial-gradient(120% 60% at 50% 0%, #13160f 0%, #07070a 55%);">
+        <div style="display:flex;align-items:center;gap:14px;padding:8px 0 10px;">
+          <button onclick="zf.goBack()" style="width:38px;height:38px;border-radius:50%;border:1px solid rgba(212,175,55,.28);background:transparent;color:#d4af37;cursor:pointer;display:flex;align-items:center;justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <div style="font-family:'Cinzel',serif;font-size:13px;letter-spacing:.2em;color:#efe9da;">CONCIERGE</div>
+        </div>
+
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
+          <div style="width:84px;height:84px;border-radius:50%;background:linear-gradient(135deg,#25d366,#128c4b);display:flex;align-items:center;justify-content:center;box-shadow:0 16px 44px rgba(37,211,102,.3);margin-bottom:22px;">
+            <svg width="42" height="42" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.4 1.3-1.94 1.38-.5.07-1.12.1-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.14-4.9-4.33-.14-.19-1.17-1.56-1.17-2.97 0-1.42.74-2.11 1-2.4.26-.29.57-.36.76-.36l.55.01c.18.01.41-.07.64.49.24.57.82 2 .89 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.17.29.74 1.22 1.59 1.98 1.1.98 2.02 1.29 2.31 1.43.29.14.46.12.63-.07.17-.19.73-.85.92-1.14.19-.29.39-.24.64-.14.26.09 1.66.78 1.95.92.29.14.48.21.55.33.07.12.07.68-.17 1.36z"/></svg>
+          </div>
+          <div style="font-size:10px;letter-spacing:.3em;color:#a98f3f;margin-bottom:10px;">CONNECTING YOU</div>
+          <h2 style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:30px;color:#f3eede;line-height:1.15;">Your concierge is <span style="font-style:italic;background:linear-gradient(100deg,#f8edc2,#d4af37,#b8860b);-webkit-background-clip:text;background-clip:text;color:transparent;">standing by.</span></h2>
+          <p style="margin:8px 0 0;font-size:13px;color:rgba(239,233,218,.58);max-width:280px;line-height:1.55;">We'll continue privately on WhatsApp. Here's the message we'll open with:</p>
+
+          <div style="margin:24px 0 8px;width:100%;text-align:left;border:1px solid rgba(212,175,55,.18);border-radius:18px;background:linear-gradient(155deg,#141319,#0b0b0f);padding:18px 20px;">
+            <div style="font-size:9.5px;letter-spacing:.2em;color:#a98f3f;margin-bottom:8px;">REGARDING</div>
+            <div id="zf-confirm-subject" style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#f3eede;margin-bottom:14px;"></div>
+            <div id="zf-confirm-message" style="border-top:1px solid rgba(212,175,55,.12);padding-top:14px;font-size:13px;line-height:1.6;color:rgba(239,233,218,.72);"></div>
+          </div>
+        </div>
+
+        <button onclick="zf.openWhatsApp()" style="width:100%;cursor:pointer;background:linear-gradient(100deg,#25d366,#1aa851);color:#04220f;border:none;border-radius:16px;padding:18px;font-family:'Cinzel',serif;font-weight:600;font-size:13px;letter-spacing:.12em;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 14px 38px rgba(37,211,102,.28);margin-top:8px;">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2z"/></svg>
+          OPEN WHATSAPP
+        </button>
+        <div style="text-align:center;margin-top:12px;font-size:11px;letter-spacing:.12em;color:rgba(239,233,218,.5);">+995 595 753 050 · Mon–Sun, 24h</div>
+      </div>
+      </section>
+
+    </div>
+
+    <!-- ===================== BOTTOM NAV ===================== -->
+    <div id="zf-nav" style="flex:0 0 auto;position:relative;height:84px;background:linear-gradient(0deg,#0a0a0e 60%, rgba(10,10,14,0));border-top:1px solid rgba(212,175,55,.12);display:flex;align-items:center;justify-content:space-around;padding:0 40px 14px;z-index:50;">
+      <button data-nav="home" onclick="zf.go('home')" style="background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;color:rgba(239,233,218,.42);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 3l9 7.5M5 9.5V20h5v-6h4v6h5V9.5"/></svg>
+        <span style="font-size:8.5px;letter-spacing:.12em;">HOME</span>
+      </button>
+      <button onclick="zf.goConcierge()" aria-label="Concierge chat" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:50%;background:radial-gradient(circle at 50% 35%, rgba(212,175,55,.28), rgba(10,10,14,.4));border:1px solid rgba(212,175,55,.45);margin-top:-22px;box-shadow:0 8px 26px rgba(212,175,55,.26);">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#zfGold)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </button>
+      <button data-nav="news" onclick="zf.go('news')" style="background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;color:rgba(239,233,218,.42);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 8h2a1 1 0 0 1 1 1v8a2 2 0 0 1-2 2M7 8h7M7 12h7M7 16h4"/></svg>
+        <span style="font-size:8.5px;letter-spacing:.12em;">NEWS</span>
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var WA_NUMBER = '995595753050';
+  var IMG_MAP = {
+    'photo-1545553708-263d16d1064d':'lambo','photo-1645539706006-83c3b9bcd0d4':'ferrari',
+    'photo-1625510872834-7db6c4273870':'rolls','photo-1648413653877-ade5eefd2f1b':'g63',
+    'photo-1758498112975-bc32bfab3ec1':'porsche','photo-1496306612363-6acd5fcf5bf3':'heli',
+    'photo-1562281302-809108fd533c':'yacht','photo-1702543180823-9722d8f76cc3':'transfer',
+    'photo-1739545884485-6f5445dad461':'maybach'
+  };
+  function remoteImg(id, w){ return 'https://images.unsplash.com/' + id + '?auto=format&fit=crop&w=' + (w||900) + '&q=80'; }
+  function imgLocal(id){ return IMG_MAP[id] ? ('images/' + IMG_MAP[id] + '.jpg') : remoteImg(id, 1000); }
+
+  var cars = [
+    { id:'lambo', img:'photo-1545553708-263d16d1064d', make:'LAMBORGHINI', model:'Huracán EVO', badge:'SPYDER',
+      tagline:'A naturally-aspirated V10 that announces your arrival before you do.',
+      quick:[{label:'TOP SPEED',value:'325'},{label:'0–100',value:'3.1s'},{label:'POWER',value:'640'}],
+      specs:[{label:'TOP SPEED KM/H',value:'325'},{label:'0–100 KM/H',value:'3.1s'},{label:'HORSEPOWER',value:'640'},{label:'ENGINE',value:'V10'}],
+      includes:['Delivery & collection in Batumi','Full insurance & fuel','Personal handover specialist'] },
+    { id:'ferrari', img:'photo-1645539706006-83c3b9bcd0d4', make:'FERRARI', model:'488 Spider', badge:'OPEN TOP',
+      tagline:'Roof down along the boulevard — the most theatrical way to see the coast.',
+      quick:[{label:'TOP SPEED',value:'330'},{label:'0–100',value:'3.0s'},{label:'POWER',value:'670'}],
+      specs:[{label:'TOP SPEED KM/H',value:'330'},{label:'0–100 KM/H',value:'3.0s'},{label:'HORSEPOWER',value:'670'},{label:'ENGINE',value:'V8 Turbo'}],
+      includes:['Delivery & collection in Batumi','Full insurance & fuel','Personal handover specialist'] },
+    { id:'rolls', img:'photo-1625510872834-7db6c4273870', make:'ROLLS-ROYCE', model:'Cullinan', badge:'BLACK BADGE',
+      tagline:'Effortless presence. Whisper-quiet luxury for the evenings that matter.',
+      quick:[{label:'SEATS',value:'5'},{label:'0–100',value:'4.9s'},{label:'POWER',value:'600'}],
+      specs:[{label:'GUESTS',value:'5'},{label:'0–100 KM/H',value:'4.9s'},{label:'HORSEPOWER',value:'600'},{label:'ENGINE',value:'V12'}],
+      includes:['Chauffeur on request','Full insurance & fuel','Champagne cooler stocked'] },
+    { id:'g63', img:'photo-1648413653877-ade5eefd2f1b', make:'MERCEDES-AMG', model:'G 63', badge:'ICON',
+      tagline:'The statement that goes everywhere — from the marina to the mountains.',
+      quick:[{label:'SEATS',value:'5'},{label:'0–100',value:'4.5s'},{label:'POWER',value:'585'}],
+      specs:[{label:'GUESTS',value:'5'},{label:'0–100 KM/H',value:'4.5s'},{label:'HORSEPOWER',value:'585'},{label:'ENGINE',value:'V8 Biturbo'}],
+      includes:['Delivery & collection in Batumi','Full insurance & fuel','Personal handover specialist'] },
+    { id:'porsche', img:'photo-1758498112975-bc32bfab3ec1', make:'PORSCHE', model:'911 Turbo S', badge:'PRECISION',
+      tagline:'The benchmark. Everyday usable, track-day devastating.',
+      quick:[{label:'TOP SPEED',value:'330'},{label:'0–100',value:'2.7s'},{label:'POWER',value:'650'}],
+      specs:[{label:'TOP SPEED KM/H',value:'330'},{label:'0–100 KM/H',value:'2.7s'},{label:'HORSEPOWER',value:'650'},{label:'ENGINE',value:'Flat-6'}],
+      includes:['Delivery & collection in Batumi','Full insurance & fuel','Personal handover specialist'] }
+  ];
+
+  var state = { screen:'splash', activeCar:null, inquiry:'', returnTo:'home' };
+  var NAV_SCREENS = { home:'home', news:'news' };
+
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  function message(){
+    var subj = state.inquiry || 'the Zeroflex Club';
+    return 'Hello Zeroflex Club — I would like to inquire about ' + subj + ' in Batumi. Please share availability and the next steps.';
+  }
+  function waLink(){ return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(message()); }
+
+  function scrollTop(){
+    requestAnimationFrame(function(){
+      var el = document.getElementById('zf-scroll');
+      if(el) el.scrollTop = 0;
+    });
+  }
+
+  function buildFleet(){
+    var html = '';
+    for(var i=0;i<cars.length;i++){
+      var c = cars[i];
+      var quick = '';
+      for(var j=0;j<c.quick.length;j++){
+        var q = c.quick[j];
+        quick += '<div style="flex:1;padding:11px 6px;text-align:center;border-right:1px solid rgba(212,175,55,.08);">'
+              +  '<div style="font-size:13px;color:#f0ead8;font-weight:500;">'+esc(q.value)+'</div>'
+              +  '<div style="font-size:8.5px;letter-spacing:.14em;color:rgba(239,233,218,.42);margin-top:2px;">'+esc(q.label)+'</div></div>';
+      }
+      html += '<div onclick="zf.openCar(\''+c.id+'\')" style="position:relative;cursor:pointer;border-radius:22px;overflow:hidden;border:1px solid rgba(212,175,55,.16);background:#0c0c10;">'
+           +  '<div style="position:relative;height:184px;">'
+           +  '<img class="zf-img" alt="'+esc(c.make+' '+c.model)+'" src="'+imgLocal(c.img)+'" onerror="this.onerror=null;this.src=\''+remoteImg(c.img,800)+'\'" style="position:absolute;inset:0;">'
+           +  '<div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg, rgba(7,7,10,.1) 0%, rgba(7,7,10,.2) 45%, rgba(7,7,10,.92) 100%);"></div>'
+           +  '<div style="position:absolute;top:14px;left:16px;pointer-events:none;font-size:9px;letter-spacing:.24em;color:#1a1408;background:linear-gradient(100deg,#f3d98b,#d4af37);padding:5px 10px;border-radius:20px;font-weight:500;">'+esc(c.badge)+'</div>'
+           +  '<div style="position:absolute;bottom:14px;left:18px;right:18px;pointer-events:none;display:flex;justify-content:space-between;align-items:flex-end;">'
+           +  '<div><div style="font-size:10px;letter-spacing:.2em;color:#cdb96a;">'+esc(c.make)+'</div>'
+           +  '<div style="font-family:\'Cormorant Garamond\',serif;font-size:25px;font-weight:500;color:#f6f1e2;line-height:1.05;">'+esc(c.model)+'</div></div>'
+           +  '<div style="text-align:right;"><div style="font-size:9px;letter-spacing:.16em;color:rgba(239,233,218,.5);">FROM</div>'
+           +  '<div style="font-size:12px;letter-spacing:.06em;color:#e6c869;font-weight:500;">On request</div></div></div>'
+           +  '</div>'
+           +  '<div style="display:flex;border-top:1px solid rgba(212,175,55,.12);">'+quick+'</div>'
+           +  '</div>';
+    }
+    document.getElementById('zf-fleet-list').innerHTML = html;
+  }
+
+  function buildCarDetail(c){
+    var specs = '';
+    for(var i=0;i<c.specs.length;i++){
+      var s = c.specs[i];
+      specs += '<div style="border:1px solid rgba(212,175,55,.16);border-radius:16px;padding:15px 16px;background:linear-gradient(155deg,#141319,#0b0b0f);">'
+            +  '<div style="font-family:\'Cormorant Garamond\',serif;font-size:26px;font-weight:600;background:linear-gradient(100deg,#f8edc2,#d4af37,#b8860b);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1;">'+esc(s.value)+'</div>'
+            +  '<div style="font-size:9.5px;letter-spacing:.2em;color:rgba(239,233,218,.5);margin-top:7px;">'+esc(s.label)+'</div></div>';
+    }
+    var inc = '';
+    for(var k=0;k<c.includes.length;k++){
+      inc += '<div style="display:flex;align-items:center;gap:12px;font-size:13px;color:rgba(239,233,218,.78);">'
+          +  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>'
+          +  esc(c.includes[k])+'</div>';
+    }
+    var html =
+      '<div style="position:relative;height:340px;">'
+      + '<img class="zf-img" alt="'+esc(c.make+' '+c.model)+'" src="'+imgLocal(c.img)+'" onerror="this.onerror=null;this.src=\''+remoteImg(c.img,1000)+'\'" style="position:absolute;inset:0;">'
+      + '<div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg, rgba(7,7,10,.55) 0%, rgba(7,7,10,.05) 30%, rgba(7,7,10,.35) 62%, #07070a 100%);"></div>'
+      + '<button onclick="zf.go(\'fleet\')" style="position:absolute;top:14px;left:18px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(212,175,55,.35);background:rgba(7,7,10,.5);backdrop-filter:blur(6px);color:#f3d98b;cursor:pointer;display:flex;align-items:center;justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg></button>'
+      + '<div style="position:absolute;top:20px;right:18px;pointer-events:none;font-size:9px;letter-spacing:.24em;color:#1a1408;background:linear-gradient(100deg,#f3d98b,#d4af37);padding:6px 12px;border-radius:20px;font-weight:600;">'+esc(c.badge)+'</div>'
+      + '<div style="position:absolute;bottom:12px;left:24px;right:24px;pointer-events:none;">'
+      + '<div style="font-size:11px;letter-spacing:.24em;color:#cdb96a;">'+esc(c.make)+'</div>'
+      + '<div style="font-family:\'Cormorant Garamond\',serif;font-size:40px;font-weight:500;color:#f7f2e4;line-height:1;">'+esc(c.model)+'</div></div>'
+      + '</div>'
+      + '<div style="padding:6px 24px 30px;">'
+      + '<p style="margin:6px 0 22px;font-family:\'Cormorant Garamond\',serif;font-style:italic;font-weight:300;font-size:19px;line-height:1.5;color:rgba(239,233,218,.78);">'+esc(c.tagline)+'</p>'
+      + '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px;">'+specs+'</div>'
+      + '<div style="font-size:10px;letter-spacing:.28em;color:#a98f3f;margin-bottom:12px;">INCLUDED</div>'
+      + '<div style="display:flex;flex-direction:column;gap:11px;margin-bottom:26px;">'+inc+'</div>'
+      + '<div style="display:flex;align-items:center;justify-content:space-between;border:1px solid rgba(212,175,55,.16);border-radius:16px;padding:16px 18px;background:linear-gradient(120deg, rgba(212,175,55,.08), transparent);margin-bottom:18px;">'
+      + '<div><div style="font-size:9.5px;letter-spacing:.2em;color:rgba(239,233,218,.5);">DAILY RESERVE</div>'
+      + '<div style="font-family:\'Cormorant Garamond\',serif;font-size:23px;color:#f3eede;font-style:italic;">Price on request</div></div>'
+      + '<div style="font-size:10px;letter-spacing:.14em;color:#a98f3f;text-align:right;max-width:96px;line-height:1.4;">Best rate shared on chat</div></div>'
+      + '<button onclick="zf.inquireCar()" style="width:100%;cursor:pointer;background:linear-gradient(100deg,#f3d98b,#d4af37,#aa811f);color:#1a1408;border:none;border-radius:16px;padding:18px;font-family:\'Cinzel\',serif;font-weight:600;font-size:13px;letter-spacing:.14em;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 14px 38px rgba(212,175,55,.26);">'
+      + '<svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.4 1.3-1.94 1.38-.5.07-1.12.1-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.14-4.9-4.33-.14-.19-1.17-1.56-1.17-2.97 0-1.42.74-2.11 1-2.4.26-.29.57-.36.76-.36l.55.01c.18.01.41-.07.64.49.24.57.82 2 .89 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.17.29.74 1.22 1.59 1.98 1.1.98 2.02 1.29 2.31 1.43.29.14.46.12.63-.07.17-.19.73-.85.92-1.14.19-.29.39-.24.64-.14.26.09 1.66.78 1.95.92.29.14.48.21.55.33.07.12.07.68-.17 1.36z"/></svg>'
+      + 'INQUIRE ON WHATSAPP</button>'
+      + '<div style="text-align:center;margin-top:12px;font-size:10.5px;letter-spacing:.18em;color:rgba(239,233,218,.4);">DELIVERED ANYWHERE IN BATUMI</div>'
+      + '</div>';
+    document.getElementById('zf-car-detail').innerHTML = html;
+  }
+
+  function render(){
+    var s = state.screen;
+    var screens = ['splash','home','fleet','carDetail','heli','boat','transfer','news','membership','confirm'];
+    for(var i=0;i<screens.length;i++){
+      var el = document.getElementById('screen-' + screens[i]);
+      if(el) el.classList.toggle('active', screens[i] === s);
+    }
+    document.getElementById('zf-statusbar').style.visibility = (s === 'splash') ? 'hidden' : 'visible';
+    document.getElementById('zf-nav').style.display = (s === 'splash' || s === 'confirm') ? 'none' : 'flex';
+    var active = NAV_SCREENS[s] || null;
+    var btns = document.querySelectorAll('#zf-nav [data-nav]');
+    for(var b=0;b<btns.length;b++){
+      var key = btns[b].getAttribute('data-nav');
+      btns[b].style.color = (key === active) ? '#e6c869' : 'rgba(239,233,218,.42)';
+    }
+    if(s === 'confirm'){
+      document.getElementById('zf-confirm-subject').textContent = state.inquiry || 'General enquiry';
+      document.getElementById('zf-confirm-message').textContent = '“' + message() + '”';
+    }
+  }
+
+  var zf = {
+    go: function(screen){ state.screen = screen; render(); scrollTop(); },
+    enter: function(){ zf.go('home'); },
+    openCar: function(id){
+      var c = null;
+      for(var i=0;i<cars.length;i++){ if(cars[i].id === id){ c = cars[i]; break; } }
+      if(!c) c = cars[0];
+      state.activeCar = c;
+      buildCarDetail(c);
+      state.screen = 'carDetail';
+      render(); scrollTop();
+    },
+    inquire: function(subject, returnTo){
+      state.inquiry = subject; state.returnTo = returnTo || 'home'; state.screen = 'confirm';
+      render(); scrollTop();
+    },
+    goConcierge: function(){ zf.inquire('a private concierge consultation', 'home'); },
+    inquireCar: function(){
+      var c = state.activeCar || cars[0];
+      zf.inquire(c.make + ' ' + c.model, 'carDetail');
+    },
+    goBack: function(){ zf.go(state.returnTo || 'home'); },
+    openWhatsApp: function(){ window.open(waLink(), '_blank', 'noopener'); }
+  };
+  window.zf = zf;
+
+  function fitFrame(){
+    var frame = document.getElementById('zf-frame');
+    if(!frame) return;
+    var scale = Math.min(1, (window.innerWidth - 24) / 402, (window.innerHeight - 24) / 858);
+    frame.style.transform = 'scale(' + scale + ')';
+    frame.style.margin = (858 * (scale - 1) / 2) + 'px ' + (402 * (scale - 1) / 2) + 'px';
+  }
+  window.addEventListener('resize', fitFrame);
+
+  buildFleet();
+  render();
+  fitFrame();
+})();
+</script>
+</body>
+</html>
