@@ -33,27 +33,45 @@
   .zf-scroll{scrollbar-width:none;-ms-overflow-style:none}
   .zf-stage{
     min-height:100vh;min-height:100dvh;width:100%;
-    display:flex;align-items:center;justify-content:center;
-    padding:12px;
-    background:radial-gradient(140% 100% at 50% -10%, #14110a 0%, #08080b 45%, #050507 100%);
-    overflow:hidden;
+    background:radial-gradient(150% 80% at 50% 0%, #14110a 0%, #08080b 45%, #050507 100%);
   }
-  .zf-frame{
-    position:relative;width:402px;height:858px;border-radius:46px;background:#07070a;
-    box-shadow:0 0 0 2px #1c1a14, 0 0 0 12px #100f0c, 0 40px 120px rgba(0,0,0,.7), 0 0 140px rgba(212,175,55,.08);
-    overflow:hidden;display:flex;flex-direction:column;flex:0 0 auto;
-    transform-origin:center center;
+  .zf-app{
+    width:100%;max-width:760px;margin:0 auto;position:relative;
+    padding-bottom:calc(94px + env(safe-area-inset-bottom));
   }
+  .zf-content{position:relative;width:100%;}
   .zf-screen{display:none;}
   .zf-screen.active{display:block;}
   .zf-img{width:100%;height:100%;object-fit:cover;display:block;background:radial-gradient(120% 90% at 50% 0%, #1b1b22 0%, #0c0c10 70%);}
   button{font-family:inherit;}
+
+  /* full-viewport splash overlay */
+  #screen-splash.active{position:fixed;inset:0;z-index:200;}
+  #screen-confirm.active > div{min-height:calc(100dvh - 24px);}
+
+  /* responsive card grids */
+  .zf-grid{display:grid;grid-template-columns:1fr;gap:14px;}
+  .zf-grid-2{display:grid;grid-template-columns:1fr;gap:18px;}
+  @media (min-width:640px){
+    .zf-grid{grid-template-columns:1fr 1fr;}
+    .zf-grid-2{grid-template-columns:1fr 1fr;}
+  }
+
+  /* fixed bottom navigation */
+  #zf-nav{
+    position:fixed;left:0;right:0;bottom:0;margin:0 auto;
+    width:100%;max-width:760px;height:84px;
+    padding:0 40px calc(14px + env(safe-area-inset-bottom));
+    background:linear-gradient(0deg,#0a0a0e 72%, rgba(10,10,14,0));
+    border-top:1px solid rgba(212,175,55,.12);
+    display:flex;align-items:center;justify-content:space-around;z-index:50;
+  }
 </style>
 </head>
 <body>
 
 <div class="zf-stage">
-  <div class="zf-frame" id="zf-frame">
+  <div class="zf-app">
 
     <!-- gold gradient def -->
     <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -62,21 +80,8 @@
       </linearGradient>
     </defs></svg>
 
-    <!-- notch -->
-    <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:132px;height:30px;background:#000;border-bottom-left-radius:18px;border-bottom-right-radius:18px;z-index:60;"></div>
-
-    <!-- status bar -->
-    <div id="zf-statusbar" style="height:50px;flex:0 0 auto;display:flex;align-items:flex-end;justify-content:space-between;padding:0 26px 6px;z-index:55;color:#efe9da;font-size:13px;letter-spacing:.04em;">
-      <span style="font-weight:500;">9:41</span>
-      <span style="display:flex;gap:7px;align-items:center;opacity:.85;font-size:12px;">
-        <svg width="17" height="11" viewBox="0 0 18 12" fill="#efe9da"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="5" y="4" width="3" height="8" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
-        <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M8 10.5l-.01.01M2 5.5a9 9 0 0 1 12 0M4.4 7.8a5.5 5.5 0 0 1 7.2 0" stroke="#efe9da" stroke-width="1.4" stroke-linecap="round"/></svg>
-        <svg width="24" height="12" viewBox="0 0 26 12" fill="none"><rect x="1" y="1" width="21" height="10" rx="2.5" stroke="#efe9da" stroke-opacity=".5"/><rect x="3" y="3" width="15" height="6" rx="1" fill="#efe9da"/><rect x="23" y="4" width="2" height="4" rx="1" fill="#efe9da" fill-opacity=".5"/></svg>
-      </span>
-    </div>
-
     <!-- ===================== CONTENT ===================== -->
-    <div class="zf-scroll" id="zf-scroll" style="flex:1 1 auto;overflow-y:auto;position:relative;">
+    <div class="zf-content" id="zf-content">
 
       <!-- ============ SPLASH ============ -->
       <section class="zf-screen active" id="screen-splash">
@@ -134,7 +139,7 @@
         </div>
 
         <!-- services -->
-        <div style="display:flex;flex-direction:column;gap:14px;">
+        <div class="zf-grid">
 
           <div onclick="zf.go('fleet')" style="position:relative;overflow:hidden;cursor:pointer;border-radius:22px;border:1px solid rgba(212,175,55,.18);min-height:132px;display:flex;flex-direction:column;justify-content:space-between;padding:22px;">
             <img class="zf-img" alt="Sport &amp; luxury cars" src="images/lambo.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1545553708-263d16d1064d?auto=format&fit=crop&w=800&q=80'" style="position:absolute;inset:0;z-index:0;">
@@ -229,7 +234,7 @@
 
         <p style="margin:2px 0 20px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:19px;color:rgba(239,233,218,.7);line-height:1.4;">A curated stable. Each car delivered, detailed and fully fuelled to you.</p>
 
-        <div id="zf-fleet-list" style="display:flex;flex-direction:column;gap:18px;"></div>
+        <div id="zf-fleet-list" class="zf-grid-2"></div>
       </div>
       </section>
 
@@ -412,7 +417,7 @@
 
         <p style="margin:2px 0 20px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:19px;color:rgba(239,233,218,.7);line-height:1.4;">New arrivals, events and the latest from the Zeroflex stable.</p>
 
-        <div style="display:flex;flex-direction:column;gap:18px;">
+        <div class="zf-grid-2">
 
           <div onclick="zf.goConcierge()" style="position:relative;cursor:pointer;border-radius:22px;overflow:hidden;border:1px solid rgba(212,175,55,.16);background:#0c0c10;">
             <div style="position:relative;height:172px;">
@@ -530,7 +535,7 @@
     </div>
 
     <!-- ===================== BOTTOM NAV ===================== -->
-    <div id="zf-nav" style="flex:0 0 auto;position:relative;height:84px;background:linear-gradient(0deg,#0a0a0e 60%, rgba(10,10,14,0));border-top:1px solid rgba(212,175,55,.12);display:flex;align-items:center;justify-content:space-around;padding:0 40px 14px;z-index:50;">
+    <div id="zf-nav">
       <button data-nav="home" onclick="zf.go('home')" style="background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;color:rgba(239,233,218,.42);">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 3l9 7.5M5 9.5V20h5v-6h4v6h5V9.5"/></svg>
         <span style="font-size:8.5px;letter-spacing:.12em;">HOME</span>
@@ -602,8 +607,7 @@
 
   function scrollTop(){
     requestAnimationFrame(function(){
-      var el = document.getElementById('zf-scroll');
-      if(el) el.scrollTop = 0;
+      window.scrollTo(0, 0);
     });
   }
 
@@ -683,7 +687,6 @@
       var el = document.getElementById('screen-' + screens[i]);
       if(el) el.classList.toggle('active', screens[i] === s);
     }
-    document.getElementById('zf-statusbar').style.visibility = (s === 'splash') ? 'hidden' : 'visible';
     document.getElementById('zf-nav').style.display = (s === 'splash' || s === 'confirm') ? 'none' : 'flex';
     var active = NAV_SCREENS[s] || null;
     var btns = document.querySelectorAll('#zf-nav [data-nav]');
@@ -723,18 +726,8 @@
   };
   window.zf = zf;
 
-  function fitFrame(){
-    var frame = document.getElementById('zf-frame');
-    if(!frame) return;
-    var scale = Math.min(1, (window.innerWidth - 24) / 402, (window.innerHeight - 24) / 858);
-    frame.style.transform = 'scale(' + scale + ')';
-    frame.style.margin = (858 * (scale - 1) / 2) + 'px ' + (402 * (scale - 1) / 2) + 'px';
-  }
-  window.addEventListener('resize', fitFrame);
-
   buildFleet();
   render();
-  fitFrame();
 })();
 </script>
 </body>
